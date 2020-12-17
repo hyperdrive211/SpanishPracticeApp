@@ -12,19 +12,17 @@ public class Display extends JFrame implements ActionListener {
     JButton btnGo;
     Color bgBlue = new Color(0,164,228,0);
 
+    IntroPanel ip;
+
     public Display(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+
         this.setBounds(new Rectangle(500, 500));
         this.setVisible(true);
+        this.setLayout(new BorderLayout());
         this.getContentPane().setBackground(new Color(0, 142, 204));
-
-        btnGo = new JButton();
-        btnGo.setBounds(200, 100, 100, 50);
-        btnGo.setText("Test Button");
-        btnGo.addActionListener(this);
-
-        this.add(btnGo);
+        ip = new IntroPanel();
+       this.getContentPane().add(ip, BorderLayout.CENTER);
 
     }
 
