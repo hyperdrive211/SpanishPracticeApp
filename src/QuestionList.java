@@ -19,4 +19,5 @@ public class QuestionList {
     public ArrayList<PracticeQuestion> getPracticeQuestions(){
         return this.practiceQuestions;
     }
+
 }

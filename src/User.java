@@ -10,7 +10,8 @@ public class User {
     public User(String username, int numberVerbsCorrect){
         this.username = username;
         this.numberVerbsCorrect = 0;
-
     }
+
+
 
 }
