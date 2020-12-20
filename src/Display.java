@@ -18,11 +18,12 @@ public class Display extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setBounds(new Rectangle(500, 500));
-        this.setVisible(true);
+
         this.setLayout(new BorderLayout());
         this.getContentPane().setBackground(new Color(0, 142, 204));
         ip = new IntroPanel();
-       this.getContentPane().add(ip, BorderLayout.CENTER);
+         this.getContentPane().add(ip, BorderLayout.CENTER);
+        this.setVisible(true);
 
     }
 

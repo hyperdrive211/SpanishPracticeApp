@@ -10,8 +10,12 @@ public class IntroPanel extends JPanel {
     JButton saveAndStart;
     User user;
     IntroPanel(){
-        this.setSize(new Dimension(200, 200));
-        this.setBackground(Color.black);
+        username = new JTextField();
+        saveAndStart = new JButton();
+        this.add(username);
+        this.add(saveAndStart);
+        this.setSize(new Dimension(400, 400));
+
 
     }
 }
