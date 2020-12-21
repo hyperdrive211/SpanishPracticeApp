@@ -12,6 +12,19 @@ public class User {
         this.numberVerbsCorrect = 0;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
+    public int getNumberVerbsCorrect() {
+        return numberVerbsCorrect;
+    }
+
+    public void setNumberVerbsCorrect(int numberVerbsCorrect) {
+        this.numberVerbsCorrect = numberVerbsCorrect;
+    }
 }

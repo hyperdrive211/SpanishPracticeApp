@@ -8,9 +8,13 @@ import java.awt.*;
  **/
 public class ChoicePanel extends JPanel {
     BtnPanel btnPanel;
+    InfoPanel infoPanel;
+    User user;
 
-    ChoicePanel(){
+    ChoicePanel(User user){
+        this.user = user;
         this.setLayout(new BorderLayout(10, 0));
+        infoPanel= new InfoPanel(this.user.getUsername(), this.user.getNumberVerbsCorrect());
         btnPanel = new BtnPanel();
         this.add(btnPanel, BorderLayout.CENTER);
 
