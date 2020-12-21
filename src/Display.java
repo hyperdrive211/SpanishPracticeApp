@@ -13,16 +13,17 @@ public class Display extends JFrame implements ActionListener {
     Color bgBlue = new Color(0,164,228,0);
 
     IntroPanel ip;
+    JPanel top;
 
     public Display(){
+        top = new JPanel();
+        top.setPreferredSize(new Dimension(100, 10));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.setBounds(new Rectangle(500, 500));
-
+        this.setBounds(new Rectangle(500, 550));
         this.setLayout(new BorderLayout());
-        this.getContentPane().setBackground(new Color(0, 142, 204));
         ip = new IntroPanel();
-         this.getContentPane().add(ip, BorderLayout.CENTER);
+        this.getContentPane().add(top, BorderLayout.NORTH);
+        this.getContentPane().add(ip, BorderLayout.CENTER);
         this.setVisible(true);
 
     }
