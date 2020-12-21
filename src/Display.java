@@ -7,31 +7,22 @@ import java.awt.event.ActionListener;
  * Created By Jonathon on 25/11/2020
  * Update Comments About Program Here
  **/
-public class Display extends JFrame implements ActionListener {
-    JTextField username;
-    JButton btnGo;
-    Color bgBlue = new Color(0,164,228,0);
-
+public class Display extends JFrame {
     IntroPanel ip;
     JPanel top;
 
     public Display(){
         top = new JPanel();
-        top.setPreferredSize(new Dimension(100, 10));
+        top.setPreferredSize(new Dimension(100, 30));
+        top.setBackground(new Color(110,192,248));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setBounds(new Rectangle(500, 550));
+        this.setBounds(new Rectangle(500, 600));
         this.setLayout(new BorderLayout());
-        ip = new IntroPanel();
+        ip = new IntroPanel(this);
         this.getContentPane().add(top, BorderLayout.NORTH);
         this.getContentPane().add(ip, BorderLayout.CENTER);
         this.setVisible(true);
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == btnGo){
-            System.out.println("Here we go!");
-        }
-    }
 }
