@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
  **/
 public class IntroPanel extends JPanel implements ActionListener {
     ChoicePanel chPanel;
-    JPanel userInfoPanel;
     JFrame currentFrame;
     JTextField username;
     JButton saveAndStart;
@@ -61,7 +60,8 @@ public class IntroPanel extends JPanel implements ActionListener {
             visible = false;
             System.out.println(username.getText());
             this.setVisible(false);
-
+            chPanel = new ChoicePanel(user);
+            currentFrame.add(chPanel);
         }
     }
 }

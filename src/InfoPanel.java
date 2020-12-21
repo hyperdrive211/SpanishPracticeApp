@@ -15,7 +15,7 @@ public class InfoPanel extends JPanel {
     InfoPanel(String name, int score){
         this.name = name;
         this.score=score;
-        this.setLayout(new GridLayout(2,1, 5,5));
+        this.setLayout(new GridLayout(2,1, 20,20));
         nameLabel = new JLabel("Name:" + this.name);
         scoreLabel = new JLabel("Score: " + String.format("%d", this.score));
 

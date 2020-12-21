@@ -9,17 +9,12 @@ import java.awt.event.ActionListener;
  **/
 public class Display extends JFrame {
     IntroPanel ip;
-    JPanel top;
 
     public Display(){
-        top = new JPanel();
-        top.setPreferredSize(new Dimension(100, 30));
-        top.setBackground(new Color(110,192,248));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(new Rectangle(500, 600));
         this.setLayout(new BorderLayout());
         ip = new IntroPanel(this);
-        this.getContentPane().add(top, BorderLayout.NORTH);
         this.getContentPane().add(ip, BorderLayout.CENTER);
         this.setVisible(true);
 
