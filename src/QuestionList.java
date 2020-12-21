@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -8,18 +9,22 @@ public class QuestionList {
 
     public ArrayList<PracticeQuestion> clothingList(){
       ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-      clothing.add(new PracticeQuestion());
-
       return clothing;
+    }
+
+    public ArrayList<PracticeQuestion> furnitureList(){
+      ArrayList<PracticeQuestion> furniture = new ArrayList<PracticeQuestion>();
+      return furniture;
+    }
+
+    public ArrayList<PracticeQuestion> kitchList(){
+      ArrayList<PracticeQuestion> kitchen = new ArrayList<PracticeQuestion>();
+      return kitchen;
+    }
+
+    public ArrayList<PracticeQuestion> travelList(){
+      ArrayList<PracticeQuestion> travel = new ArrayList<PracticeQuestion>();
+      return travel;
     }
 
 }
