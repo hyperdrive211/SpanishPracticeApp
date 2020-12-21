@@ -5,19 +5,21 @@ import java.util.ArrayList;
  * Update Comments About Program Here
  **/
 public class QuestionList {
-    private ArrayList<PracticeQuestion> practiceQuestions;
 
+    public ArrayList<PracticeQuestion> clothingList(){
+      ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
+      clothing.add(new PracticeQuestion());
 
-    public QuestionList(){
-    }
-
-    public void setPracticeQuestions(ArrayList<PracticeQuestion> practiceQuestions) {
-        practiceQuestions.add(new PracticeQuestion("Comer", "Comi", "Comera"));
-        this.practiceQuestions = practiceQuestions;
-    }
-
-    public ArrayList<PracticeQuestion> getPracticeQuestions(){
-        return this.practiceQuestions;
+      return clothing;
     }
 
 }

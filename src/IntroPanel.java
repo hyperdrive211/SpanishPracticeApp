@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
  * Update Comments About Program Here
  **/
 public class IntroPanel extends JPanel implements ActionListener {
-     btnPanel;
+    BtnPanel btnPanel;
     JPanel userInfoPanel;
     JFrame currentFrame;
     JTextField username;

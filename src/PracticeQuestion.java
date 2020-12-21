@@ -3,37 +3,37 @@
  * Update Comments About Program Here
  **/
 public class PracticeQuestion {
-    private String verb;
-    private String pastTense;
-    private String futureTense;
+    private String imgURL;
+    private String nounQuestion;
+    private String nounAnswer;
 
-    public PracticeQuestion(String verb, String pastTense, String futureTense){
-        this.verb = verb;
-        this.pastTense = pastTense;
-        this.futureTense = futureTense;
+    PracticeQuestion(String url, String nounQ, String nounA){
+        this.imgURL = url;
+        this.nounQuestion = nounQ;
+        this.nounAnswer = nounA;
     }
 
-    public String getPastTense() {
-        return pastTense;
+    public String getNounQuestion() {
+        return nounQuestion;
     }
 
-    public void setPastTense(String pastTense) {
-        this.pastTense = pastTense;
+    public void setNounQuestion(String nounQuestion) {
+        this.nounQuestion = nounQuestion;
     }
 
-    public String getFutureTense() {
-        return futureTense;
+    public String getNounAnswer() {
+        return nounAnswer;
     }
 
-    public void setFutureTense(String futureTense) {
-        this.futureTense = futureTense;
+    public void setNounAnswer(String nounAnswer) {
+        this.nounAnswer = nounAnswer;
     }
 
-    public String getVerb() {
-        return verb;
+    public String getImgURL() {
+        return imgURL;
     }
 
-    public void setVerb(String verb) {
-        this.verb = verb;
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
 }
