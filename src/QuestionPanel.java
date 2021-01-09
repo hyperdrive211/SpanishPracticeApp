@@ -23,9 +23,15 @@ public class QuestionPanel extends JPanel implements ActionListener {
         img = new ImageIcon(pq.getImgURL());
         holdIMG = new JLabel();
         holdIMG.setIcon(img);
+        input = new JTextField();
+        btnCheck = new JButton("Check Answer!");
+
+
+        this.setLayout(new FlowLayout());
         
-
-
+        this.add(holdIMG);
+        this.add(input);
+        this.add(btnCheck);
     }
 
     @Override
