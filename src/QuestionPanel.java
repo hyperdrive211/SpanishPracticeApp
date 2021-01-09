@@ -9,7 +9,9 @@ import java.util.ArrayList;
 public class QuestionPanel extends JPanel {
     ArrayList<PracticeQuestion> questions = new ArrayList<PracticeQuestion>();
     User user;
-    QuestionPanel(User user, ArrayList<PracticeQuestion> questions){
+
+
+    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel){
         this.user = user;
         this.questions = questions;
     }
