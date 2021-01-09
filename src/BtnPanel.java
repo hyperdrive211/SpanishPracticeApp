@@ -16,7 +16,7 @@ public class BtnPanel extends JPanel implements ActionListener {
     String [] btnNames = {"Clothing","Furniture", "Kitchen", "Travel"};
     User user;
     QuestionPanel qPanel;
-    QuestionList questionList;
+    QuestionList questionList = new QuestionList();
 
 
 
@@ -42,18 +42,14 @@ public class BtnPanel extends JPanel implements ActionListener {
             System.out.println("Clothing");
             changePanels(questionList.clothingList());
 
-            for(int i = 0; i < questionList.clothingList().size(); i++){
-                System.out.println(questionList.clothingList());
-            }
-
         }
     }
 
     public void changePanels(ArrayList<PracticeQuestion> questions){
         System.out.println("Button has been pressed!");
         qPanel = new QuestionPanel(user, questions, choicePanel);
-        choicePanel.remove(choicePanel.btnPanel);
         choicePanel.add(qPanel, BorderLayout.CENTER);
+        choicePanel.btnPanel.setVisible(false);
 
     }
 }
