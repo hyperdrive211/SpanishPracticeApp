@@ -15,7 +15,7 @@ public class ChoicePanel extends JPanel {
         this.user = user;
         this.setLayout(new BorderLayout(50, 50));
         infoPanel= new InfoPanel(this.user.getUsername(), this.user.getNumberVerbsCorrect());
-        btnPanel = new BtnPanel();
+        btnPanel = new BtnPanel(this, user);
         this.add(infoPanel, BorderLayout.NORTH);
         this.add(btnPanel, BorderLayout.CENTER);
     }

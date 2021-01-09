@@ -7,8 +7,9 @@ import java.util.ArrayList;
  **/
 public class QuestionList {
 
+    ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
     public ArrayList<PracticeQuestion> clothingList(){
-      ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
+      clothing.add(new PracticeQuestion("", "", ""));
       return clothing;
     }
 
