@@ -7,6 +7,11 @@ public class PracticeQuestion {
     private String nounQuestion;
     private String nounAnswer;
 
+    //Default constructor
+    PracticeQuestion(){
+
+    }
+
     PracticeQuestion(String url, String nounQ, String nounA){
         this.imgURL = url;
         this.nounQuestion = nounQ;
