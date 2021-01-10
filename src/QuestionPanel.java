@@ -10,15 +10,20 @@ import java.util.ArrayList;
  **/
 public class QuestionPanel extends JPanel implements ActionListener {
     PracticeQuestion pq = new PracticeQuestion();
+    ArrayList<PracticeQuestion> pqList = new ArrayList<PracticeQuestion>();
     User user;
     ImageIcon img;
     JLabel holdIMG;
     JTextField input;
     JButton btnCheck;
+    JLabel feedBack; 
+    int questionCount = 0;
 
 
     QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel){
-        pq = questions.get(0);
+        pqList = questions;
+        pq = pqList.get(questionCount);
+
         this.user = user;
         img = new ImageIcon(pq.getImgURL());
         holdIMG = new JLabel();
@@ -30,8 +35,8 @@ public class QuestionPanel extends JPanel implements ActionListener {
         this.setLayout(null);
 
         holdIMG.setBounds(20, 20, 200, 200);
-        input.setBounds(20, 50, 200, 200);
-        btnCheck.setBounds(20, 100, 100, 50);
+        input.setBounds(20, 250, 200, 50);
+        btnCheck.setBounds(20, 350, 100, 50);
 
         btnCheck.addActionListener(this);
 
@@ -40,10 +45,26 @@ public class QuestionPanel extends JPanel implements ActionListener {
         this.add(btnCheck);
     }
 
+    private void answerDisplay(boolean correct){
+        if(correct)
+            this.setBackground(Color.GREEN);
+        else
+            this.setBackground(Color.RED);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnCheck){
+            if(input.getText().toLowerCase() != pq.getNounAnswer()){
+              answerDisplay(false);
+            }
+            else{
+               answerDisplay(true);
+                questionCount++;
+                if(questionCount != pqList.size()){
 
+                }
+            }
         }
 
     }
