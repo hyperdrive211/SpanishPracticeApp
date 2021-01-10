@@ -26,9 +26,15 @@ public class QuestionPanel extends JPanel implements ActionListener {
         input = new JTextField();
         btnCheck = new JButton("Check Answer!");
 
+        //Layout Components
+        this.setLayout(null);
 
-        this.setLayout(new FlowLayout());
-        
+        holdIMG.setBounds(20, 20, 200, 200);
+        input.setBounds(20, 50, 200, 200);
+        btnCheck.setBounds(20, 100, 100, 50);
+
+        btnCheck.addActionListener(this);
+
         this.add(holdIMG);
         this.add(input);
         this.add(btnCheck);
@@ -36,6 +42,9 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == btnCheck){
+
+        }
 
     }
 }
