@@ -16,7 +16,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
     JLabel holdIMG;
     JTextField input;
     JButton btnCheck;
-    JLabel feedBack; 
+    JLabel feedBack;
     int questionCount = 0;
 
 
@@ -30,13 +30,18 @@ public class QuestionPanel extends JPanel implements ActionListener {
         holdIMG.setIcon(img);
         input = new JTextField();
         btnCheck = new JButton("Check Answer!");
+        feedBack = new JLabel();
+        feedBack.setForeground(Color.WHITE);
+
 
         //Layout Components
         this.setLayout(null);
 
-        holdIMG.setBounds(20, 20, 200, 200);
-        input.setBounds(20, 250, 200, 50);
-        btnCheck.setBounds(20, 350, 100, 50);
+        holdIMG.setBounds(100, 0, 200, 200);
+
+        holdIMG.setBorder(BorderFactory.createLineBorder(Color.black));
+        input.setBounds(100, 250, 200, 50);
+        btnCheck.setBounds(100, 350, 150, 50);
 
         btnCheck.addActionListener(this);
 
@@ -46,16 +51,29 @@ public class QuestionPanel extends JPanel implements ActionListener {
     }
 
     private void answerDisplay(boolean correct){
-        if(correct)
+        if(correct) {
             this.setBackground(Color.GREEN);
-        else
+            feedBack.setText("Correct!");
+            try{
+                Thread.sleep(10000);
+            }
+            catch(InterruptedException ie){
+                ie.printStackTrace();
+            }
+        }
+        else {
             this.setBackground(Color.RED);
+            feedBack.setText("Incorrect");
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnCheck){
+            System.out.println(input.getText());
+            System.out.println(pq.getNounAnswer());
             if(input.getText().toLowerCase() != pq.getNounAnswer()){
+
               answerDisplay(false);
             }
             else{
