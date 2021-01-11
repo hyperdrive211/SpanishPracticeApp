@@ -54,18 +54,13 @@ public class QuestionPanel extends JPanel implements ActionListener {
         if(correct) {
             this.setBackground(Color.GREEN);
             feedBack.setText("Correct!");
-            try{
-                Thread.sleep(10000);
-            }
-            catch(InterruptedException ie){
-                ie.printStackTrace();
-            }
         }
         else {
             this.setBackground(Color.RED);
             feedBack.setText("Incorrect");
         }
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -79,6 +74,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
             else{
                answerDisplay(true);
                 questionCount++;
+
                 if(questionCount != pqList.size()){
 
                 }
