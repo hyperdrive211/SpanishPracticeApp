@@ -18,12 +18,24 @@ public class QuestionPanel extends JPanel implements ActionListener {
     JButton btnCheck;
     JLabel feedBack;
     int questionCount = 0;
+    //2 second delay for
+    int elapsedTime = 3000;
 
+    Timer timer = new Timer(1000, new ActionListener(){
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+         elapsedTime -= 1000;
+         if(elapsedTime == 0){
+             timer.stop();
+             
+         }
+        }
+    });
 
     QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel){
         pqList = questions;
         pq = pqList.get(questionCount);
-
         this.user = user;
         img = new ImageIcon(pq.getImgURL());
         holdIMG = new JLabel();
@@ -53,12 +65,18 @@ public class QuestionPanel extends JPanel implements ActionListener {
     private void answerDisplay(boolean correct){
         if(correct) {
             this.setBackground(Color.GREEN);
+            timer.start();
             feedBack.setText("Correct!");
         }
         else {
             this.setBackground(Color.RED);
             feedBack.setText("Incorrect");
+            timer.start();
         }
+    }
+
+    void getNextQuestion(){
+
     }
 
 
@@ -68,7 +86,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
             System.out.println(input.getText());
             System.out.println(pq.getNounAnswer());
             if(input.getText().toLowerCase() != pq.getNounAnswer()){
-
               answerDisplay(false);
             }
             else{
