@@ -28,6 +28,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
          elapsedTime -= 1000;
          if(elapsedTime == 0){
              timer.stop();
+             getNextQuestion();
              
          }
         }
@@ -37,6 +38,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         pqList = questions;
         pq = pqList.get(questionCount);
         this.user = user;
+        System.out.println(pq.getImgURL());
         img = new ImageIcon(pq.getImgURL());
         holdIMG = new JLabel();
         holdIMG.setIcon(img);
@@ -82,19 +84,24 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String answer;
         if(e.getSource() == btnCheck){
-            System.out.println(input.getText());
-            System.out.println(pq.getNounAnswer());
-            if(input.getText().toLowerCase() != pq.getNounAnswer()){
-              answerDisplay(false);
-            }
-            else{
-               answerDisplay(true);
+            answer = input.getText().toLowerCase();
+            System.out.println(answer);
+            System.out.println(pq.getNounAnswer().equalsIgnoreCase(answer));
+            System.out.println(pq.getNounAnswer().toLowerCase());
+            if(pq.getNounAnswer().equalsIgnoreCase(answer)){
+                answerDisplay(true);
+                questionCount++;
+                timer.start();
                 questionCount++;
 
                 if(questionCount != pqList.size()){
 
                 }
+            }
+            else{
+                answerDisplay(false);
             }
         }
 

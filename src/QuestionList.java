@@ -9,7 +9,7 @@ public class QuestionList {
 
     ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
     public ArrayList<PracticeQuestion> clothingList(){
-      clothing.add(new PracticeQuestion("", "", ""));
+      clothing.add(new PracticeQuestion("img/clothing/coat_200X200.jpg", "Coat", "Abrigo"));
       return clothing;
     }
 
