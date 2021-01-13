@@ -28,7 +28,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
          elapsedTime -= 1000;
          if(elapsedTime == 0){
              timer.stop();
-             getNextQuestion();
+             got
              
          }
         }
@@ -68,6 +68,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         if(correct) {
             this.setBackground(Color.GREEN);
             timer.start();
+            JOptionPane.showMessageDialog(null, "Correct");
             feedBack.setText("Correct!");
         }
         else {
@@ -87,18 +88,11 @@ public class QuestionPanel extends JPanel implements ActionListener {
         String answer;
         if(e.getSource() == btnCheck){
             answer = input.getText().toLowerCase();
-            System.out.println(answer);
-            System.out.println(pq.getNounAnswer().equalsIgnoreCase(answer));
-            System.out.println(pq.getNounAnswer().toLowerCase());
+
             if(pq.getNounAnswer().equalsIgnoreCase(answer)){
                 answerDisplay(true);
                 questionCount++;
                 timer.start();
-                questionCount++;
-
-                if(questionCount != pqList.size()){
-
-                }
             }
             else{
                 answerDisplay(false);
