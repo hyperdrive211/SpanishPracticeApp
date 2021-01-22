@@ -28,8 +28,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
          elapsedTime -= 1000;
          if(elapsedTime == 0){
              timer.stop();
-             got
-             
          }
         }
     });

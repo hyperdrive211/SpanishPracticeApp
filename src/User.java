@@ -1,3 +1,5 @@
+import java.util.Date;
+
 /**
  * Created By Jonathon on 25/11/2020
  * Update Comments About Program Here
@@ -5,11 +7,20 @@
 public class User {
 
     private String username;
-    private int numberVerbsCorrect;
+    private String password;
+    private int markClothing, markBody, markTravel;
+    private Date dateClothingComplete, dateBodyComplete, dateTravelComplete;
 
-    public User(String username, int numberVerbsCorrect){
+    public User(){
+        
+    }
+
+    public User(String username, int mClothing, int mBody, int markTravel){
         this.username = username;
-        this.numberVerbsCorrect = 0;
+        this.password = password;
+        this.markClothing = mClothing;
+        this.markBody = mBody;
+        this.markTravel = markTravel;
     }
 
     public String getUsername() {
