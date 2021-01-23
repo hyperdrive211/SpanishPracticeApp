@@ -8,13 +8,13 @@ import java.util.HashMap;
 public class UserMap {
     HashMap<String, User> userMap = new HashMap<String, User>();
 
-    UserMap(HashMap<String, User> uMap){
-        this.userMap = uMap;
+    UserMap(){
+
     }
     public void getData(){
           try {
 
-              FileInputStream fis = new FileInputStream("UserData");
+              FileInputStream fis = new FileInputStream("Users/UserData");
               ObjectInputStream ois = new ObjectInputStream(fis);
 
               this.userMap = (HashMap) ois.readObject();
@@ -33,9 +33,14 @@ public class UserMap {
           }
     }
 
+    public HashMap<String, User> getUserMap(){
+        return this.userMap;
+    }
+
     public void saveData(){
+        System.out.println(this.userMap);
         try {
-            FileOutputStream fos = new FileOutputStream("UserData");
+            FileOutputStream fos = new FileOutputStream("Users/UserData");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(this.userMap);

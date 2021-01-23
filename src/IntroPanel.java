@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 /**
  * Created By Jonathon on 17/12/2020
@@ -16,6 +17,8 @@ public class IntroPanel extends JPanel implements ActionListener {
     JLabel flagHolder;
     JLabel appName;
     boolean visible = true;
+    HashMap<String, User> userList = new HashMap<String, User>();
+    UserMap uMap;
     IntroPanel(JFrame parameterFrame){
         currentFrame = parameterFrame;
         //Flag Component
@@ -43,7 +46,12 @@ public class IntroPanel extends JPanel implements ActionListener {
         saveAndStart.setText("Let's Begin!");
         saveAndStart.addActionListener(this);
 
-
+        //get list of users to check for log in
+        uMap = new UserMap();
+        uMap.getData();
+        userList = uMap.getUserMap();
+        System.out.println(userList);
+        System.out.println(userList.size());
         this.setLayout(null);
         this.setBackground(new Color(110,192,248));
         this.add(flagHolder);
@@ -58,7 +66,12 @@ public class IntroPanel extends JPanel implements ActionListener {
         if(e.getSource() == saveAndStart){
             user = new User();
             visible = false;
-            System.out.println(username.getText());
+            if(userList.get(username.getText()) == null){
+                user.setUsername(username.getText());
+                uMap.addUser(user);
+                uMap.saveData();
+            }
+
             this.setVisible(false);
             chPanel = new ChoicePanel(user);
             currentFrame.add(chPanel);
