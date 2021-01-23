@@ -56,7 +56,7 @@ public class IntroPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == saveAndStart){
-            user = new User(username.getText(), 0);
+            user = new User();
             visible = false;
             System.out.println(username.getText());
             this.setVisible(false);

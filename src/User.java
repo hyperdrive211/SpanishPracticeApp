@@ -1,21 +1,23 @@
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created By Jonathon on 25/11/2020
  * Update Comments About Program Here
  **/
-public class User {
+public class User implements Serializable {
 
     private String username;
+    private String name;
     private String password;
     private int markClothing, markBody, markTravel;
     private Date dateClothingComplete, dateBodyComplete, dateTravelComplete;
 
     public User(){
-        
+
     }
 
-    public User(String username, int mClothing, int mBody, int markTravel){
+    public User(String username, String password, int mClothing, int mBody, int markTravel){
         this.username = username;
         this.password = password;
         this.markClothing = mClothing;
@@ -31,11 +33,4 @@ public class User {
         this.username = username;
     }
 
-    public int getNumberVerbsCorrect() {
-        return numberVerbsCorrect;
-    }
-
-    public void setNumberVerbsCorrect(int numberVerbsCorrect) {
-        this.numberVerbsCorrect = numberVerbsCorrect;
-    }
 }

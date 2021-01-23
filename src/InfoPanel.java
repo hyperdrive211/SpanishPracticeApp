@@ -12,6 +12,10 @@ public class InfoPanel extends JPanel {
     JLabel nameLabel;
     JLabel scoreLabel;
 
+    InfoPanel(){
+
+    }
+
     InfoPanel(String name, int score){
         this.name = name;
         this.score=score;
