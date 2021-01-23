@@ -47,7 +47,11 @@ public class UserMap {
     }
 
     public void addUser(User u){
-        
+        this.userMap.put(u.getUsername(), u);
+    }
+
+    public User getUser(String username){
+        return this.userMap.get(username);
     }
 
 }
