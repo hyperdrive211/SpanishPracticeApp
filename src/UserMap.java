@@ -40,6 +40,7 @@ public class UserMap {
     public void saveData(){
         System.out.println(this.userMap);
         try {
+            
             FileOutputStream fos = new FileOutputStream("Users/UserData");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
