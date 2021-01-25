@@ -9,6 +9,7 @@ import java.util.HashMap;
  * Update Comments About Program Here
  **/
 public class IntroPanel extends JPanel implements ActionListener {
+    Registration reg;
     ChoicePanel chPanel;
     JFrame currentFrame;
     JTextField username;
@@ -67,9 +68,7 @@ public class IntroPanel extends JPanel implements ActionListener {
             user = new User();
             visible = false;
             if(userList.get(username.getText()) == null){
-                user.setUsername(username.getText());
-                uMap.addUser(user);
-                uMap.saveData();
+                reg = new Registration(uMap, user);
             }
 
             this.setVisible(false);
