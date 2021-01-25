@@ -10,6 +10,7 @@ import java.util.HashMap;
  **/
 public class IntroPanel extends JPanel implements ActionListener {
     Registration reg;
+    Login login;
     ChoicePanel chPanel;
     JFrame currentFrame;
     JTextField username;
@@ -67,13 +68,12 @@ public class IntroPanel extends JPanel implements ActionListener {
         if(e.getSource() == saveAndStart){
             user = new User();
             visible = false;
+            //search the map for a username
             if(userList.get(username.getText()) == null){
-                reg = new Registration(uMap, user);
+                reg = new Registration(uMap, user, this);
+            } else {
+                login = new Login(user, this);
             }
-
-            this.setVisible(false);
-            chPanel = new ChoicePanel(user);
-            currentFrame.add(chPanel);
         }
     }
 }
