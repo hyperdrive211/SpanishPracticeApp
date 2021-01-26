@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
  * Update Comments About Program Here
  **/
 public class Display extends JFrame {
-    IntroPanel ip;
+    private IntroPanel ip;
 
     public Display(){
         this.setTitle("Johnny Spanish Noun Project");
@@ -19,7 +19,17 @@ public class Display extends JFrame {
         this.getContentPane().add(ip, BorderLayout.CENTER);
         this.setResizable(false);
         this.setVisible(true);
-
     }
 
+    public IntroPanel getIp() {
+        return ip;
+    }
+
+    public void setIp(IntroPanel ip) {
+        this.ip = ip;
+    }
+
+    public void setIPVisible(){
+        ip.setVisible(false);
+    }
 }

@@ -23,8 +23,9 @@ public class IntroPanel extends JPanel implements ActionListener {
     boolean visible = true;
     HashMap<String, User> userList = new HashMap<String, User>();
     UserMap uMap;
-    IntroPanel(JFrame parameterFrame){
-        currentFrame = parameterFrame;
+    Display display;
+    IntroPanel(Display display){
+        this.display = display;
         //Flag Component
         ImageIcon flag = new ImageIcon("./img/flag.png");
         flagHolder = new JLabel();
@@ -77,7 +78,7 @@ public class IntroPanel extends JPanel implements ActionListener {
             if(userList.get(username.getText()) == null){
                 reg = new Registration(uMap, user, this);
             } else {
-                login = new Login(user, this);
+                login = new Login(user, display);
             }
         }
     }

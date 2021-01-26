@@ -8,19 +8,20 @@ import java.awt.event.ActionListener;
  * Update Comments About Program Here
  **/
 public class Login  extends JFrame implements ActionListener {
-    String font = "Sans-serif";
-    User user;
-    JLabel loginLabel, passwordLabel;
-    JPasswordField passWordTextfield;
-    JButton ckBtn, cancelBtn;
-    Display display;
-    IntroPanel introPanel;
+    private String font = "Sans-serif";
+    private User user;
+    private JLabel loginLabel, passwordLabel;
+    private JPasswordField passWordTextfield;
+    private JButton ckBtn, cancelBtn;
+    private Display display;
+    private IntroPanel introPanel;
+    private ChoicePanel chPanel;
 
-    Login(User user, IntroPanel ip){
+    Login(User user, Display display){
         this.user = user;
-        this.introPanel = ip;
-
         this.getContentPane().setBackground(new Color(110,192,248));
+        this.display = display;
+        this.introPanel = display.getIp();
 
         loginLabel = new JLabel("Login");
         loginLabel.setForeground(Color.white);
@@ -73,7 +74,9 @@ public class Login  extends JFrame implements ActionListener {
             user.setPassword("Password");
             if(passWordTextfield.getText().equals(user.getPassword()))
             {
+               chPanel = new ChoicePanel(user);
                introPanel.setVisible(false);
+               display.add(chPanel);
                this.dispose();
 
             }

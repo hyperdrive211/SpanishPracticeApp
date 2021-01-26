@@ -11,14 +11,14 @@ public class User implements Serializable {
     private String username;
     private String name;
     private String password;
-    private int markClothing, markBody, markTravel;
-    private Date dateClothingComplete, dateBodyComplete, dateTravelComplete;
+    private int  markClothing, markBody, markTravel;
+    private Date  dateClothingComplete, dateBodyComplete, dateTravelComplete;
 
     public User(){
 
     }
 
-    public User(String username, String password, int mClothing, int mBody, int markTravel){
+    public User(String username, String password, int mClothing,  int mBody, int markTravel){
         this.username = username;
         this.password = password;
         this.markClothing = mClothing;

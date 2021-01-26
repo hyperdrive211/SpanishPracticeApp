@@ -20,6 +20,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
     int questionCount = 0;
     //2 second delay for
     int elapsedTime = 3000;
+    Color bgColor = new Color(110,192,248);
 
     Timer timer = new Timer(1000, new ActionListener(){
 
@@ -40,6 +41,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         img = new ImageIcon(pq.getImgURL());
         holdIMG = new JLabel();
         holdIMG.setIcon(img);
+        this.setBackground(bgColor);
         input = new JTextField();
         btnCheck = new JButton("Check Answer!");
         feedBack = new JLabel();
