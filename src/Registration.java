@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +20,8 @@ public class Registration extends JFrame implements ActionListener {
         this.ip = ip;
         this.uMap = uMap;
         this.user = user;
+
+        this.getContentPane().setBackground(new Color(110,192,248));
 
         //Labels
         usernameLabel = new JLabel("Username");
@@ -45,7 +48,7 @@ public class Registration extends JFrame implements ActionListener {
         saveBtn = new JButton("Save");
         cancelBtn = new JButton("Cancel");
 
-        
+
         this.setTitle("Registration");
         this.setLayout(null);
         this.setSize(550, 550);

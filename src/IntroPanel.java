@@ -9,6 +9,7 @@ import java.util.HashMap;
  * Update Comments About Program Here
  **/
 public class IntroPanel extends JPanel implements ActionListener {
+
     Registration reg;
     Login login;
     ChoicePanel chPanel;
@@ -31,21 +32,24 @@ public class IntroPanel extends JPanel implements ActionListener {
         flagHolder.setHorizontalAlignment(JLabel.CENTER);
 
         //App Name Label
-        appName = new JLabel("Spanish Nouns");
-        appName.setFont(new Font("Monospaced", Font.BOLD, 25));
+        appName = new JLabel("Spanish Noun Project");
+        appName.setForeground(Color.WHITE);
+        appName.setFont(new Font("Sans-serif", Font.BOLD, 30));
         appName.setHorizontalAlignment(JLabel.CENTER);
-        appName.setBounds(70, 200, 200, 70);
+        appName.setBounds(30, 200, 350, 70);
 
         //Username TextField
-        username = new JTextField("Enter Username");
+        username = new JTextField();
         username.setSize(400, 50 );
         username.setBounds(70, 270, 250, 50);
 
 
         //save and continue btn
         saveAndStart= new JButton();
-        saveAndStart.setBounds(80, 350, 150, 50);
+        saveAndStart.setBounds(100, 350, 150, 50);
         saveAndStart.setText("Let's Begin!");
+        saveAndStart.setBackground(Color.green);
+        saveAndStart.setForeground(Color.white);
         saveAndStart.addActionListener(this);
 
         //get list of users to check for log in
