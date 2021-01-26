@@ -8,10 +8,11 @@ import java.awt.event.ActionListener;
  * Update Comments About Program Here
  **/
 public class Registration extends JFrame implements ActionListener {
+    String font = "Sans-serif";
     UserMap uMap;
     IntroPanel ip;
     User user;
-    JLabel usernameLabel, confirmUsernameLabel, name,  passwordLabel, confirmPasswordLabel;
+    JLabel registrationTitle, usernameLabel, confirmUsernameLabel, name,  passwordLabel, confirmPasswordLabel;
     JTextField usernameText, confirmUsernameText, passwordText, confirmPasswordText;
     JButton saveBtn, cancelBtn;
 
@@ -24,14 +25,27 @@ public class Registration extends JFrame implements ActionListener {
         this.getContentPane().setBackground(new Color(110,192,248));
 
         //Labels
-        usernameLabel = new JLabel("Username");
 
-        confirmUsernameLabel = new JLabel("Please confirm Username");
+        registrationTitle = new JLabel("Registration");
+        registrationTitle.setForeground(Color.white);
+        registrationTitle.setFont(new Font(font, Font.BOLD, 35));
 
-        passwordLabel = new JLabel("Password");
 
-        confirmPasswordLabel = new JLabel("Please confirm password");
+        usernameLabel = new JLabel("Username:");
+        usernameLabel.setForeground(Color.white);
+        usernameLabel.setFont(new Font(font, Font.BOLD, 25));
 
+        confirmUsernameLabel = new JLabel("Please confirm Username:");
+        confirmUsernameLabel.setForeground(Color.white);
+        confirmUsernameLabel.setFont(new Font(font, Font.BOLD, 25));
+
+        passwordLabel = new JLabel("Password:");
+        passwordLabel.setForeground(Color.white);
+        passwordLabel.setFont(new Font(font, Font.BOLD, 25));
+
+        confirmPasswordLabel = new JLabel("Please confirm password:");
+        confirmPasswordLabel.setForeground(Color.white);
+        confirmPasswordLabel.setFont(new Font(font, Font.BOLD, 25));
 
         //Textfields
 
@@ -46,7 +60,14 @@ public class Registration extends JFrame implements ActionListener {
 
         //Buttons
         saveBtn = new JButton("Save");
+        saveBtn.setForeground(Color.white);
+        saveBtn.setBackground(Color.green);
+        saveBtn.addActionListener(this);
+
         cancelBtn = new JButton("Cancel");
+        cancelBtn.setForeground(Color.white);
+        cancelBtn.setBackground(Color.green);
+        cancelBtn.addActionListener(this);
 
 
         this.setTitle("Registration");
@@ -56,6 +77,16 @@ public class Registration extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == saveBtn){
 
+        }
+        if(e.getSource() == cancelBtn){
+            this.dispose();
+        }
+
+    }
+
+    public String valiationText(){
+        return ""; 
     }
 }

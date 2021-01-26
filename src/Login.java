@@ -13,11 +13,12 @@ public class Login  extends JFrame implements ActionListener {
     JLabel loginLabel, passwordLabel;
     JTextField passWordTextfield;
     JButton ckBtn, cancelBtn;
-    IntroPanel ip;
+    Display display;
+    IntroPanel introPanel;
 
     Login(User user, IntroPanel ip){
         this.user = user;
-        this.ip = ip;
+        this.introPanel = ip;
 
         this.getContentPane().setBackground(new Color(110,192,248));
 
@@ -29,10 +30,10 @@ public class Login  extends JFrame implements ActionListener {
         passwordLabel = new JLabel("Enter Password:");
         passwordLabel.setForeground(Color.WHITE);
         passwordLabel.setFont(new Font(font, Font.BOLD, 20));
-        passwordLabel.setBounds(50, 75, 200, 50);
+        passwordLabel.setBounds(50, 100, 200, 50);
 
         passWordTextfield = new JTextField();
-        passWordTextfield.setBounds(50, 120, 200, 50);
+        passWordTextfield.setBounds(50, 170, 200, 50);
 
 
         //Button styling and placement
@@ -40,13 +41,16 @@ public class Login  extends JFrame implements ActionListener {
         ckBtn.setForeground(Color.white);
         ckBtn.setBackground(Color.green);
         ckBtn.setBounds(50, 250, 90, 50);
+        ckBtn.addActionListener(this);
 
         cancelBtn = new JButton("Cancel");
         cancelBtn.setBackground(Color.green);
         cancelBtn.setForeground(Color.white);
         cancelBtn.setBounds(160, 250, 90, 50);
+        cancelBtn.addActionListener(this);
 
-        
+
+
         this.add(loginLabel);
         this.add(passWordTextfield);
         this.add(passwordLabel);
@@ -61,6 +65,18 @@ public class Login  extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == cancelBtn){
+            this.dispose();
+        }
+        if(e.getSource() == ckBtn){
+            user.setPassword("Password");
+            if(passWordTextfield.getText().equals(user.getPassword()))
+            {
+               introPanel.setVisible(false);
+               this.dispose();
+
+            }
+        }
 
     }
 }
