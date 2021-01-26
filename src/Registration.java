@@ -13,7 +13,8 @@ public class Registration extends JFrame implements ActionListener {
     IntroPanel ip;
     User user;
     JLabel registrationTitle, usernameLabel, confirmUsernameLabel, name,  passwordLabel, confirmPasswordLabel;
-    JTextField usernameText, confirmUsernameText, passwordText, confirmPasswordText;
+    JTextField usernameText, confirmUsernameText;
+    JPasswordField passwordText, confirmPasswordText;
     JButton saveBtn, cancelBtn;
 
     Registration(UserMap uMap, User user, IntroPanel ip){
@@ -29,6 +30,7 @@ public class Registration extends JFrame implements ActionListener {
         registrationTitle = new JLabel("Registration");
         registrationTitle.setForeground(Color.white);
         registrationTitle.setFont(new Font(font, Font.BOLD, 35));
+        registrationTitle.setBounds(20, 20, 200, 50);
 
 
         usernameLabel = new JLabel("Username:");
@@ -54,9 +56,9 @@ public class Registration extends JFrame implements ActionListener {
 
         confirmUsernameText = new JTextField();
 
-        passwordText = new JTextField();
+        passwordText = new JPasswordField();
 
-        confirmPasswordText = new JTextField();
+        confirmPasswordText = new JPasswordField();
 
         //Buttons
         saveBtn = new JButton("Save");
@@ -69,16 +71,29 @@ public class Registration extends JFrame implements ActionListener {
         cancelBtn.setBackground(Color.green);
         cancelBtn.addActionListener(this);
 
+        this.add(registrationTitle);
+
 
         this.setTitle("Registration");
         this.setLayout(null);
         this.setSize(550, 550);
+        this.setResizable(false);
         this.setVisible(true);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        String validation;
         if(e.getSource() == saveBtn){
+            validation = validationText(usernameText.getText(), confirmUsernameText.getText(), passwordText.getText(), confirmPasswordText.getText());
+            if(validation != ""){
+                JOptionPane.showMessageDialog(null, validation);
+            }
+            else {
+                User newUser = new User();
+                newUser.setUsername(confirmUsernameText.getText());
+                newUser.setPassword(confirmPasswordText.getText());
 
+            }
         }
         if(e.getSource() == cancelBtn){
             this.dispose();
@@ -86,7 +101,14 @@ public class Registration extends JFrame implements ActionListener {
 
     }
 
-    public String valiationText(){
-        return ""; 
+    public String validationText(String username, String confirmUsername, String password, String confirmPassword){
+        String returnString = "";
+        if(!username.equals(confirmUsername)){
+            returnString += "Username and Confirm Username must be the same value. \n";
+        }
+        if(!password.equals(confirmPassword)){
+            returnString += "Password and Confirm Password must be thr same value. ";
+        }
+        return returnString;
     }
 }

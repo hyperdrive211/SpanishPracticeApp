@@ -12,6 +12,7 @@ public class BtnPanel extends JPanel implements ActionListener {
 
     //in this class we get the Array lists of nouns and create a new question panel on the basis of the noun list.
     ChoicePanel choicePanel;
+    Color bgColor = new Color(110,192,248);
     JButton btnClothing, btnTravel, btnKitchen, btnFurniture;
     String [] btnNames = {"Clothing","Furniture", "Kitchen", "Travel"};
     User user;
@@ -23,16 +24,25 @@ public class BtnPanel extends JPanel implements ActionListener {
     BtnPanel(ChoicePanel choicePanel, User user){
         this.user = user;
         this.choicePanel = choicePanel;
-        this.setLayout(new GridLayout(2,2));
-        btnClothing = new JButton(btnNames[0]);
-        btnFurniture = new JButton(btnNames[1]);
-        btnKitchen = new JButton(btnNames[2]);
-        btnTravel = new JButton(btnNames[3]);
+        this.setLayout(null);
+
+
+        btnClothing = new JButton("Clothing");
+        btnFurniture = new JButton("Furniture");
+        btnKitchen = new JButton("Kitchen");
+        btnTravel = new JButton("Travel");
+
+
+
         btnClothing.addActionListener(this);
+        btnFurniture.addActionListener(this);
+        btnKitchen.addActionListener(this);
+        btnTravel.addActionListener(this);
         this.add(btnClothing);
         this.add(btnFurniture);
         this.add(btnKitchen);
         this.add(btnTravel);
+        this.setBackground(bgColor);
     }
 
     @Override

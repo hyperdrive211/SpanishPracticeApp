@@ -11,7 +11,7 @@ public class Login  extends JFrame implements ActionListener {
     String font = "Sans-serif";
     User user;
     JLabel loginLabel, passwordLabel;
-    JTextField passWordTextfield;
+    JPasswordField passWordTextfield;
     JButton ckBtn, cancelBtn;
     Display display;
     IntroPanel introPanel;
@@ -32,7 +32,7 @@ public class Login  extends JFrame implements ActionListener {
         passwordLabel.setFont(new Font(font, Font.BOLD, 20));
         passwordLabel.setBounds(50, 100, 200, 50);
 
-        passWordTextfield = new JTextField();
+        passWordTextfield = new JPasswordField();
         passWordTextfield.setBounds(50, 170, 200, 50);
 
 
@@ -60,6 +60,7 @@ public class Login  extends JFrame implements ActionListener {
         this.setLayout(null);
         this.setSize(300, 400);
         this.setTitle("Login");
+        this.setResizable(false);
         this.setVisible(true);
     }
 

@@ -12,6 +12,8 @@ public class InfoPanel extends JPanel {
     JLabel nameLabel;
     JLabel scoreLabel;
 
+    Color bgColor = new Color(110,192,248);
+
     InfoPanel(){
 
     }
@@ -20,6 +22,7 @@ public class InfoPanel extends JPanel {
         this.name = name;
         this.score=score;
         this.setLayout(new GridLayout(2,1, 20,20));
+        this.setBackground(bgColor);
         nameLabel = new JLabel("Name:" + this.name);
         scoreLabel = new JLabel("Score: " + String.format("%d", this.score));
 

@@ -9,7 +9,8 @@ import java.util.HashMap;
  * Update Comments About Program Here
  **/
 public class IntroPanel extends JPanel implements ActionListener {
-
+    Color bgColor = new Color(110,192,248);
+    String font = "Sans-serif";
     Registration reg;
     Login login;
     ChoicePanel chPanel;
@@ -34,15 +35,15 @@ public class IntroPanel extends JPanel implements ActionListener {
         //App Name Label
         appName = new JLabel("Spanish Noun Project");
         appName.setForeground(Color.WHITE);
-        appName.setFont(new Font("Sans-serif", Font.BOLD, 30));
+        appName.setFont(new Font(font, Font.BOLD, 35));
         appName.setHorizontalAlignment(JLabel.CENTER);
-        appName.setBounds(30, 200, 350, 70);
+        appName.setBounds(15, 200, 370, 70);
 
         //Username TextField
         username = new JTextField();
         username.setSize(400, 50 );
+        username.setFont(new Font(font, Font.PLAIN, 25));
         username.setBounds(70, 270, 250, 50);
-
 
         //save and continue btn
         saveAndStart= new JButton();
@@ -59,7 +60,7 @@ public class IntroPanel extends JPanel implements ActionListener {
         System.out.println(userList);
         System.out.println(userList.size());
         this.setLayout(null);
-        this.setBackground(new Color(110,192,248));
+        this.setBackground(bgColor);
         this.add(flagHolder);
         this.add(appName);
         this.add(username);

@@ -10,6 +10,7 @@ public class ChoicePanel extends JPanel {
     BtnPanel btnPanel;
     InfoPanel infoPanel;
     User user;
+    Color bgColor = new Color(110,192,248);
 
     ChoicePanel(User user){
         this.user = user;
