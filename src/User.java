@@ -9,6 +9,15 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 3517273589099160013L;
     private String username;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String name;
     private String password;
     private int  markClothing, markBody, markTravel;
@@ -16,14 +25,6 @@ public class User implements Serializable {
 
     public User(){
 
-    }
-
-    public User(String username, String password, int mClothing,  int mBody, int markTravel){
-        this.username = username;
-        this.password = password;
-        this.markClothing = mClothing;
-        this.markBody = mBody;
-        this.markTravel = markTravel;
     }
 
     public String getUsername() {

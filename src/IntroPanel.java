@@ -14,7 +14,6 @@ public class IntroPanel extends JPanel implements ActionListener {
     Registration reg;
     Login login;
     ChoicePanel chPanel;
-    JFrame currentFrame;
     JTextField username;
     JButton saveAndStart;
     User user;
@@ -76,8 +75,10 @@ public class IntroPanel extends JPanel implements ActionListener {
             visible = false;
             //search the map for a username
             if(userList.get(username.getText()) == null){
-                reg = new Registration(uMap, user, this);
+                user.setUsername(username.getText());
+                reg = new Registration(uMap, user, display);
             } else {
+                user = userList.get(username.getText());
                 login = new Login(user, display);
             }
         }

@@ -63,6 +63,8 @@ public class Login  extends JFrame implements ActionListener {
         this.setTitle("Login");
         this.setResizable(false);
         this.setVisible(true);
+
+        System.out.println(user.getPassword());
     }
 
     @Override
@@ -71,8 +73,7 @@ public class Login  extends JFrame implements ActionListener {
             this.dispose();
         }
         if(e.getSource() == ckBtn){
-            user.setPassword("Password");
-            if(passWordTextfield.getText().equals(user.getPassword()))
+            if(String.valueOf(passWordTextfield.getPassword()).equals(user.getPassword()))
             {
                chPanel = new ChoicePanel(user);
                introPanel.setVisible(false);

@@ -9,8 +9,7 @@ public class InfoPanel extends JPanel {
 
     String name;
     int score;
-    JLabel nameLabel;
-    JLabel scoreLabel;
+    JLabel nameLabel, welcomeLabel;
 
     Color bgColor = new Color(110,192,248);
 
@@ -18,16 +17,16 @@ public class InfoPanel extends JPanel {
 
     }
 
-    InfoPanel(String name, int score){
+    InfoPanel(String name){
         this.name = name;
         this.score=score;
         this.setLayout(new GridLayout(2,1, 20,20));
         this.setBackground(bgColor);
         nameLabel = new JLabel("Name:" + this.name);
-        scoreLabel = new JLabel("Score: " + String.format("%d", this.score));
+
+        welcomeLabel = new JLabel("Welcome! Today we are gonna learn some Spanish!");
 
         this.add(nameLabel);
-        this.add(scoreLabel);
         this.setSize(new Dimension(400,100));
     }
 
