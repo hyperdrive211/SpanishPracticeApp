@@ -9,10 +9,11 @@ import java.awt.event.ActionListener;
  **/
 public class Display extends JFrame {
     private IntroPanel ip;
-
+    private Color bgColor = new Color(110,192,248);
     public Display(){
         this.setTitle("Johnny Spanish Noun Project");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.getContentPane().setBackground(bgColor);
         this.setBounds(new Rectangle(500, 600));
         this.setLayout(new BorderLayout());
         ip = new IntroPanel(this);
