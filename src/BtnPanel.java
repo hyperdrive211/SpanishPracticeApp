@@ -14,11 +14,10 @@ public class BtnPanel extends JPanel implements ActionListener {
     ChoicePanel choicePanel;
     Color bgColor = new Color(110,192,248);
     JButton btnClothing, btnTravel, btnKitchen, btnFurniture;
-    String [] btnNames = {"Clothing","Furniture", "Kitchen", "Travel"};
+   
     User user;
     QuestionPanel qPanel;
     QuestionList questionList = new QuestionList();
-
 
 
     BtnPanel(ChoicePanel choicePanel, User user){
@@ -26,12 +25,25 @@ public class BtnPanel extends JPanel implements ActionListener {
         this.choicePanel = choicePanel;
         this.setLayout(null);
 
-
         btnClothing = new JButton("Clothing");
-        btnFurniture = new JButton("Furniture");
-        btnKitchen = new JButton("Kitchen");
-        btnTravel = new JButton("Travel");
+        btnClothing.setBackground(Color.green);
+        btnClothing.setForeground(Color.white);
+        btnClothing.setBounds(20, 50, 150, 50);
 
+        btnFurniture = new JButton("Furniture");
+        btnFurniture.setBackground(Color.green);
+        btnFurniture.setForeground(Color.white);
+        btnFurniture.setBounds(20, 120, 150, 50);
+
+        btnKitchen = new JButton("Kitchen");
+        btnKitchen.setBackground(Color.green);
+        btnKitchen.setForeground(Color.white);
+        btnKitchen.setBounds(200, 50, 150, 50);
+
+        btnTravel = new JButton("Travel");
+        btnTravel.setBackground(Color.green);
+        btnTravel.setForeground(Color.white);
+        btnTravel.setBounds(200, 170, 150, 50);
 
 
         btnClothing.addActionListener(this);
