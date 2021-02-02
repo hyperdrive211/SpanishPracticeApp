@@ -10,7 +10,12 @@ import java.util.ArrayList;
  **/
 public class QuestionPanel extends JPanel implements ActionListener {
     PracticeQuestion pq = new PracticeQuestion();
+    //this is the question list that we take in from the the each of the lists
     ArrayList<PracticeQuestion> pqList = new ArrayList<PracticeQuestion>();
+
+    //on each correct question answer this will be added to a new list for the display on the next screen.
+    ArrayList<PracticeQuestion> returnPQList = new ArrayList<PracticeQuestion>();
+
     User user;
     ImageIcon img;
     JLabel holdIMG;
@@ -44,6 +49,8 @@ public class QuestionPanel extends JPanel implements ActionListener {
         this.setBackground(bgColor);
         input = new JTextField();
         btnCheck = new JButton("Check Answer!");
+        btnCheck.setBackground(Color.green);
+        btnCheck.setForeground(Color.white);
 
         feedBack = new JLabel("");
         feedBack.setForeground(Color.WHITE);
@@ -67,10 +74,11 @@ public class QuestionPanel extends JPanel implements ActionListener {
     }
 
     private void answerDisplay(boolean correct){
+        elapsedTime = 2000;
         if(correct) {
-            elapsedTime = 2000;
             timer.start();
             this.setBackground(Color.green);
+            returnPQList.add(new PracticeQuestion(pq.getNounAnswer(), pq.getNounQuestion(), input.getText(), true));
             feedBack.setText("Correct!");
         }
         else {
@@ -80,15 +88,22 @@ public class QuestionPanel extends JPanel implements ActionListener {
         }
     }
 
+    void reset(){
+        this.setBackground(bgColor);
+        feedBack.setText("");
+        input.setText("");
+    }
+
     void getNextQuestion(int questionCount){
         System.out.println(questionCount);
       if(questionCount == pqList.size()){
           //here we take the feedback screen
           System.out.println("You have reached the end.");
+
+
       }
       else{
-          this.setBackground(bgColor);
-          input.setText("");
+          reset();
           pq = pqList.get(questionCount);
           holdIMG.setIcon(new ImageIcon(pq.getImgURL()));
       }
@@ -103,6 +118,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
             System.out.println(pq.getNounAnswer());
             if(pq.getNounAnswer().equalsIgnoreCase(answer)){
                 answerDisplay(true);
+
                 questionCount++;
                 timer.start();
             }

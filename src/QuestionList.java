@@ -11,6 +11,7 @@ public class QuestionList {
     public ArrayList<PracticeQuestion> clothingList(){
       clothing.add(new PracticeQuestion("img/clothing/coat_200X200.jpg", "Coat", "Abrigo"));
       clothing.add(new PracticeQuestion("img/clothing/gloves_200x200.png", "Gloves", "Guantes"));
+
       return clothing;
     }
 

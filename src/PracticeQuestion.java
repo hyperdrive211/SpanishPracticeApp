@@ -3,9 +3,8 @@
  * Update Comments About Program Here
  **/
 public class PracticeQuestion {
-    private String imgURL;
-    private String nounQuestion;
-    private String nounAnswer;
+    private String imgURL, nounQuestion, nounAnswer, userAnswer;
+    private boolean isCorrect;
 
     //Default constructor
     PracticeQuestion(){
@@ -16,6 +15,13 @@ public class PracticeQuestion {
         this.imgURL = url;
         this.nounQuestion = nounQ;
         this.nounAnswer = nounA;
+    }
+
+    PracticeQuestion(String nounQ, String nounA, String userAnswer, Boolean isCorrect){
+        this.nounQuestion = nounQ;
+        this.nounAnswer = nounA;
+        this.userAnswer = userAnswer;
+        this.isCorrect = isCorrect;
     }
 
     public String getNounQuestion() {
@@ -40,5 +46,13 @@ public class PracticeQuestion {
 
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
+    }
+
+    public boolean getCorrect(){
+        return this.isCorrect;
+    }
+
+    public void setCorrect(boolean correct){
+        this.isCorrect = correct;
     }
 }
