@@ -14,7 +14,7 @@ public class BtnPanel extends JPanel implements ActionListener {
     ChoicePanel choicePanel;
     Color bgColor = new Color(110,192,248);
     JButton btnClothing, btnTravel, btnKitchen, btnFurniture;
-   
+
     User user;
     QuestionPanel qPanel;
     QuestionList questionList = new QuestionList();
@@ -72,6 +72,5 @@ public class BtnPanel extends JPanel implements ActionListener {
         qPanel = new QuestionPanel(user, questions, choicePanel);
         choicePanel.add(qPanel, BorderLayout.CENTER);
         choicePanel.btnPanel.setVisible(false);
-
     }
 }
