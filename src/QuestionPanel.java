@@ -15,13 +15,13 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     //on each correct question answer this will be added to a new list for the display on the next screen.
     ArrayList<PracticeQuestion> returnPQList = new ArrayList<PracticeQuestion>();
-
     User user;
     ImageIcon img;
     JLabel holdIMG;
     JTextField input;
     JButton btnCheck;
     JLabel feedBack;
+    String questionDef;
     int questionCount = 0;
     //2 second delay for
     int elapsedTime = 2000;
@@ -39,7 +39,8 @@ public class QuestionPanel extends JPanel implements ActionListener {
         }
     });
 
-    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel){
+    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel, String questionDef){
+        this.questionDef = questionDef;
         pqList = questions;
         pq = pqList.get(questionCount);
         this.user = user;
@@ -107,6 +108,26 @@ public class QuestionPanel extends JPanel implements ActionListener {
           pq = pqList.get(questionCount);
           holdIMG.setIcon(new ImageIcon(pq.getImgURL()));
       }
+    }
+
+    //At the end of the question list we will set the value and date of the last time the test was complete.
+    //we will then update the list with the values and save the result.
+    void endTask(){
+        int score = 0;
+        for(int i = 0; i < returnPQList.size(); i++){
+            System.out.println(returnPQList.get(i).getNounAnswer());
+            if(returnPQList.get(i).getCorrect()){
+                score++;
+            }
+        }
+        //use th switch to update the
+        switch(questionDef){
+            case "Clothing":
+                user.setMarkClothing(score);
+                break;
+            default:
+                break;
+        }
     }
 
 

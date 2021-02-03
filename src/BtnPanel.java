@@ -59,17 +59,15 @@ public class BtnPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if(e.getSource() == btnClothing){
             System.out.println("Clothing");
-            changePanels(questionList.clothingList());
-
+            changePanels(questionList.clothingList(), "Clothing");
         }
     }
 
-    public void changePanels(ArrayList<PracticeQuestion> questions){
+    public void changePanels(ArrayList<PracticeQuestion> questions, String questionDef){
         System.out.println("Button has been pressed!");
-        qPanel = new QuestionPanel(user, questions, choicePanel);
+        qPanel = new QuestionPanel(user, questions, choicePanel, questionDef);
         choicePanel.add(qPanel, BorderLayout.CENTER);
         choicePanel.btnPanel.setVisible(false);
     }

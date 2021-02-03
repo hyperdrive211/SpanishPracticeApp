@@ -43,4 +43,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public void setMarkClothing(int mark){
+        this.markClothing = mark;
+    }
+
+    public int getMarkClothing(){
+        return this.markClothing;
+    }
+
 }
