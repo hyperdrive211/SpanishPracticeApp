@@ -120,14 +120,19 @@ public class QuestionPanel extends JPanel implements ActionListener {
                 score++;
             }
         }
-        //use th switch to update the
+        //use th switch to update the score of the different sections
         switch(questionDef){
             case "Clothing":
                 user.setMarkClothing(score);
                 break;
+
             default:
                 break;
         }
+
+        //once score and date have been set, send the user the results list and the score and date to the end screen
+
+
     }
 
 
@@ -139,7 +144,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
             System.out.println(pq.getNounAnswer());
             if(pq.getNounAnswer().equalsIgnoreCase(answer)){
                 answerDisplay(true);
-
                 questionCount++;
                 timer.start();
             }

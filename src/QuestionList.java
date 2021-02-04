@@ -11,6 +11,14 @@ public class QuestionList {
     public ArrayList<PracticeQuestion> clothingList(){
       clothing.add(new PracticeQuestion("img/clothing/coat_200X200.jpg", "Coat", "Abrigo"));
       clothing.add(new PracticeQuestion("img/clothing/gloves_200x200.png", "Gloves", "Guantes"));
+      clothing.add(new PracticeQuestion("img/clothing/shirt.jpg", "Shirt", "Camisa"));
+      clothing.add(new PracticeQuestion("", "Trousers", "Pantalones"));
+      clothing.add(new PracticeQuestion("", "Glasses", "Lentes"));
+      clothing.add(new PracticeQuestion("", "Sombrero", "Hat"));
+      clothing.add(new PracticeQuestion("", "T-Shirt", "Camiseta"));
+      clothing.add(new PracticeQuestion("", "Tie", ""));
+      clothing.add(new PracticeQuestion("", "Shoes", "Zapatoes"));
+      clothing.add(new PracticeQuestion("", "Skirt", "Falda"));
 
       return clothing;
     }
