@@ -15,6 +15,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     //on each correct question answer this will be added to a new list for the display on the next screen.
     ArrayList<PracticeQuestion> returnPQList = new ArrayList<PracticeQuestion>();
+    UserMap userMap;
     User user;
     ImageIcon img;
     JLabel holdIMG;
@@ -26,6 +27,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
     //2 second delay for
     int elapsedTime = 2000;
     Color bgColor = new Color(110,192,248);
+    JFrame frame;
 
     Timer timer = new Timer(1000, new ActionListener(){
         @Override
@@ -39,7 +41,8 @@ public class QuestionPanel extends JPanel implements ActionListener {
         }
     });
 
-    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel, String questionDef){
+    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel, String questionDef, JFrame frame){
+        this.frame = frame;
         this.questionDef = questionDef;
         pqList = questions;
         pq = pqList.get(questionCount);
@@ -113,6 +116,13 @@ public class QuestionPanel extends JPanel implements ActionListener {
     //At the end of the question list we will set the value and date of the last time the test was complete.
     //we will then update the list with the values and save the result.
     void endTask(){
+        int score = getScore();
+        //once score and date have been set, send the user the results list and the score and date to the end screen
+        userMap = new UserMap();
+        updateScore(questionDef, user, score);
+    }
+
+    void int getScore(){
         int score = 0;
         for(int i = 0; i < returnPQList.size(); i++){
             System.out.println(returnPQList.get(i).getNounAnswer());
@@ -120,8 +130,13 @@ public class QuestionPanel extends JPanel implements ActionListener {
                 score++;
             }
         }
+
+        return score;
+    }
+
+    void updateScore(String question, User user, int score){
         //use th switch to update the score of the different sections
-        switch(questionDef){
+        switch(question){
             case "Clothing":
                 user.setMarkClothing(score);
                 break;
@@ -129,10 +144,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
             default:
                 break;
         }
-
-        //once score and date have been set, send the user the results list and the score and date to the end screen
-
-
     }
 
 

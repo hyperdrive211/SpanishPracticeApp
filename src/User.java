@@ -51,4 +51,15 @@ public class User implements Serializable {
         return this.markClothing;
     }
 
+
+    //using this as a chance to practice method overloading by having several toString string methods
+    //but with several parameters
+
+    //
+    public String toString(){
+
+    }
+
+
+
 }

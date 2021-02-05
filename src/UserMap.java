@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class UserMap {
     HashMap<String, User> userMap = new HashMap<String, User>();
 
+    //default constructor
     UserMap(){
 
     }
@@ -59,5 +60,9 @@ public class UserMap {
     public User getUser(String username){
         return this.userMap.get(username);
     }
+
+
+    //using this as a chance to practice sorting,
+    //going to be sorting by the scores of candidates totals
 
 }
