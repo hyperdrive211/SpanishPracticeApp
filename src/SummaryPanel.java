@@ -34,21 +34,26 @@ public class SummaryPanel extends JPanel implements ActionListener {
 
     }
 
-    public JLabel [] returnFeedBack(ArrayList<PracticeQuestion> fbList, JPanel panel){
+    public void returnFeedBack(ArrayList<PracticeQuestion> fbList, JPanel panel){
         //loop the list and use it make a table like list of the results
         //set an image for if the answer was correct or not and then question and
         //the answer provided,
         int x = 20, y = 10;
-        JLabel [] labelList = new JLabel[10];
+        JPanel [] panelList = new JPanel[10];
         for(int i = 0; i < fbList.size(); i++){
-            System.out.println(fbList.get(i).feedbackString());
-            labelList[i] = new JLabel(fbList.get(i).feedbackString());
-            labelList[i].setBounds(x, y, 200, 40);
-            panel.add(labelList[i]);
+            panelList[i] = new JPanel();
+            panelList[i].setBounds(x, y, 200, 30);
+            JLabel labelEnglish = new JLabel(fbList.get(i).getNounQuestion());
+            labelEnglish.setBounds(5, 5, 50, 30);
+            panelList[i].add(labelEnglish);
+            JLabel labelSpanish = new JLabel(fbList.get(i).getNounAnswer());
+            labelSpanish.setBounds(55,5, 50, 30);
+            panelList[i].add(labelSpanish);
+            panel.add(panelList[i]);
             y += 20;
         }
 
-        return labelList;
+
     }
 
 

@@ -125,7 +125,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
         int score = 0;
         for(int i = 0; i < returnPQList.size(); i++){
             System.out.println(returnPQList.get(i).getNounAnswer());
-            System.out.println(returnPQList.get(i).feedbackString());
             if(returnPQList.get(i).getCorrect()){
                 score++;
             }
@@ -151,8 +150,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
         frame.getContentPane().removeAll();
         frame.repaint();
         frame.add(new SummaryPanel(user, returnPQList, questionDef));
-
-
     }
 
 

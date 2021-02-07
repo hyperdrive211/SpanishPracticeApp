@@ -57,7 +57,15 @@ public class PracticeQuestion {
         this.isCorrect = correct;
     }
 
-    public String feedbackString(){
-        return String.format("%s\t\t\t\t\t\t%s\t\t\t\t\t\t\t%s", this.nounAnswer, this.nounQuestion, this.userAnswer);
+    public boolean isCorrect() {
+        return isCorrect;
+    }
+
+    public String getUserAnswer() {
+        return userAnswer;
+    }
+
+    public void setUserAnswer(String userAnswer) {
+        this.userAnswer = userAnswer;
     }
 }
