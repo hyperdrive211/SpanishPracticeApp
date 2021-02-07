@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class SummaryPanel extends JPanel implements ActionListener {
     User user;
     UserMap uMap;
-    ArrayList<QuestionList> feedBackList;
+    ArrayList<PracticeQuestion> feedBackList;
     JLabel resultImage, userInfo;
     JPanel firstDisplay, leaderBoardPanel, resultsPanel;
     JLabel [] eachAnswerResult, leaderBoard;
@@ -18,40 +18,39 @@ public class SummaryPanel extends JPanel implements ActionListener {
     String section;
 
 
-    SummaryPanel(User user, ArrayList<QuestionList> returnList, String section){
+    SummaryPanel(User user, ArrayList<PracticeQuestion> returnList, String section){
         this.user = user;
         this.feedBackList = returnList;
         this.section = section;
 
         //Set the progress image with an emoji!
         resultImage = new JLabel();
-        eachAnswerResult = returnFeedBack(this.feedBackList);
+        eachAnswerResult = new JLabel [10];
         resultsPanel = new JPanel();
-        resultsPanel.setBounds(20, 50, 300, 300);
-        insertList(resultsPanel, eachAnswerResult);
+        returnFeedBack(returnList, resultsPanel);
+        resultsPanel.setBounds(20, 50, 400, 400);
         this.add(resultsPanel);
+        this.setBounds(20, 20, 500, 500);
 
     }
 
-    public JLabel [] returnFeedBack(ArrayList<QuestionList> fbList){
+    public JLabel [] returnFeedBack(ArrayList<PracticeQuestion> fbList, JPanel panel){
         //loop the list and use it make a table like list of the results
         //set an image for if the answer was correct or not and then question and
         //the answer provided,
+        int x = 20, y = 10;
         JLabel [] labelList = new JLabel[10];
         for(int i = 0; i < fbList.size(); i++){
-            labelList[i].setText(fbList.get(i).toString());
-            labelList[i].setBounds(0, 0, 200, 100);
+            System.out.println(fbList.get(i).feedbackString());
+            labelList[i] = new JLabel(fbList.get(i).feedbackString());
+            labelList[i].setBounds(x, y, 200, 40);
+            panel.add(labelList[i]);
+            y += 20;
         }
 
         return labelList;
     }
 
-    public void insertList(JPanel panel, JLabel [] labelList){
-        int i=0;
-        while(i < labelList.length){
-            panel.add(labelList[i]);
-        }
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

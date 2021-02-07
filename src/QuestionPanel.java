@@ -41,8 +41,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         }
     });
 
-    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel, String questionDef, JFrame frame){
-        this.frame = frame;
+    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel, String questionDef){
         this.questionDef = questionDef;
         pqList = questions;
         pq = pqList.get(questionCount);
@@ -79,6 +78,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     private void answerDisplay(boolean correct){
         elapsedTime = 2000;
+        btnCheck.setEnabled(false);
         if(correct) {
             timer.start();
             this.setBackground(Color.green);
@@ -96,15 +96,14 @@ public class QuestionPanel extends JPanel implements ActionListener {
         this.setBackground(bgColor);
         feedBack.setText("");
         input.setText("");
+        btnCheck.setEnabled(true);
     }
 
     void getNextQuestion(int questionCount){
         System.out.println(questionCount);
       if(questionCount == pqList.size()){
-          //here we take the feedback screen
-          System.out.println("You have reached the end.");
-
-
+            endTask();
+            clearPanelAddSummary();
       }
       else{
           reset();
@@ -122,10 +121,11 @@ public class QuestionPanel extends JPanel implements ActionListener {
         updateScore(questionDef, user, score);
     }
 
-    void int getScore(){
+     int getScore(){
         int score = 0;
         for(int i = 0; i < returnPQList.size(); i++){
             System.out.println(returnPQList.get(i).getNounAnswer());
+            System.out.println(returnPQList.get(i).feedbackString());
             if(returnPQList.get(i).getCorrect()){
                 score++;
             }
@@ -144,6 +144,15 @@ public class QuestionPanel extends JPanel implements ActionListener {
             default:
                 break;
         }
+    }
+
+    void clearPanelAddSummary(){
+        JFrame frame = (JFrame) SwingUtilities.getRoot(this);
+        frame.getContentPane().removeAll();
+        frame.repaint();
+        frame.add(new SummaryPanel(user, returnPQList, questionDef));
+
+
     }
 
 

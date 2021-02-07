@@ -1,3 +1,4 @@
+import java.lang.String.*;
 /**
  * Created By Jonathon on 25/11/2020
  * Update Comments About Program Here
@@ -54,5 +55,9 @@ public class PracticeQuestion {
 
     public void setCorrect(boolean correct){
         this.isCorrect = correct;
+    }
+
+    public String feedbackString(){
+        return String.format("%s\t\t\t\t\t\t%s\t\t\t\t\t\t\t%s", this.nounAnswer, this.nounQuestion, this.userAnswer);
     }
 }

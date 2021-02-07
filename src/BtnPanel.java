@@ -13,8 +13,8 @@ public class BtnPanel extends JPanel implements ActionListener {
     //in this class we get the Array lists of nouns and create a new question panel on the basis of the noun list.
     ChoicePanel choicePanel;
     Color bgColor = new Color(110,192,248);
-    JButton btnClothing, btnTravel, btnKitchen, btnFurniture;
-
+    DisplayBtn btnClothing, btnTravel, btnKitchen, btnFurniture;
+    String questionDef = "";
     User user;
     QuestionPanel qPanel;
     QuestionList questionList = new QuestionList();
@@ -25,35 +25,23 @@ public class BtnPanel extends JPanel implements ActionListener {
         this.choicePanel = choicePanel;
         this.setLayout(null);
 
-        btnClothing = new JButton("Clothing");
-        btnClothing.setBackground(Color.green);
-        btnClothing.setForeground(Color.white);
-        btnClothing.setBounds(20, 50, 150, 50);
-
-        btnFurniture = new JButton("Furniture");
-        btnFurniture.setBackground(Color.green);
-        btnFurniture.setForeground(Color.white);
-        btnFurniture.setBounds(20, 120, 150, 50);
-
-        btnKitchen = new JButton("Kitchen");
-        btnKitchen.setBackground(Color.green);
-        btnKitchen.setForeground(Color.white);
-        btnKitchen.setBounds(200, 50, 150, 50);
-
-        btnTravel = new JButton("Travel");
-        btnTravel.setBackground(Color.green);
-        btnTravel.setForeground(Color.white);
-        btnTravel.setBounds(200, 170, 150, 50);
-
-
+        btnClothing = new DisplayBtn(20, 50, 50, 150, 24, "Clothing");
         btnClothing.addActionListener(this);
-        btnFurniture.addActionListener(this);
-        btnKitchen.addActionListener(this);
-        btnTravel.addActionListener(this);
         this.add(btnClothing);
+
+        btnFurniture = new DisplayBtn(20, 120, 50, 150, 24, "Furniture");
+        btnFurniture.addActionListener(this);
         this.add(btnFurniture);
+
+        btnKitchen = new DisplayBtn(200, 50, 50, 150, 24,"Kitchen");
+        btnKitchen.addActionListener(this);
         this.add(btnKitchen);
+
+        btnTravel = new DisplayBtn(200, 170, 50, 170, 24, "Travel");
+        btnTravel.addActionListener(this);
         this.add(btnTravel);
+
+
         this.setBackground(bgColor);
     }
 
