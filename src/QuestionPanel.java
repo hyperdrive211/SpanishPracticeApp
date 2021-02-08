@@ -147,7 +147,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     void clearPanelAddSummary(){
         JFrame frame = (JFrame) SwingUtilities.getRoot(this);
-        frame.getContentPane().removeAll();
         frame.repaint();
         frame.add(new SummaryPanel(user, returnPQList, questionDef));
     }

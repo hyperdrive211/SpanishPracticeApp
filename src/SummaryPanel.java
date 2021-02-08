@@ -28,7 +28,7 @@ public class SummaryPanel extends JPanel implements ActionListener {
         eachAnswerResult = new JLabel [10];
         resultsPanel = new JPanel();
         returnFeedBack(returnList, resultsPanel);
-        resultsPanel.setBounds(20, 50, 400, 400);
+        resultsPanel.setBounds(20, 50, 350, 400);
         this.add(resultsPanel);
         this.setBounds(20, 20, 500, 500);
 
@@ -47,8 +47,11 @@ public class SummaryPanel extends JPanel implements ActionListener {
             labelEnglish.setBounds(5, 5, 50, 30);
             panelList[i].add(labelEnglish);
             JLabel labelSpanish = new JLabel(fbList.get(i).getNounAnswer());
-            labelSpanish.setBounds(55,5, 50, 30);
+            labelSpanish.setBounds(80,5, 50, 30);
             panelList[i].add(labelSpanish);
+            JLabel labelAnswer = new JLabel(fbList.get(i).getUserAnswer());
+            labelAnswer.setBounds(120, 5, 50, 30);
+            panelList[i].add(labelAnswer);
             panel.add(panelList[i]);
             y += 20;
         }
