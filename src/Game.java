@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import javax.swing.*;
+
+import java.awt.*;
 
 /**
  * Created By Jonathon on 25/11/2020
@@ -8,7 +9,6 @@ import java.util.Scanner;
 public class Game {
     public static void main(String [] args){
         Display d = new Display();
-
     }
 
 }

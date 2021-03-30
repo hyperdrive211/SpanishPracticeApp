@@ -17,39 +17,43 @@ public class IntroPanel extends JPanel implements ActionListener {
     JTextField username;
     JButton saveAndStart;
     User user;
-    JLabel flagHolder;
-    JLabel appName;
+    JLabel flagHolder, appName, usernameLabel;
     boolean visible = true;
     HashMap<String, User> userList = new HashMap<String, User>();
     UserMap uMap;
     Display display;
     IntroPanel(Display display){
         this.display = display;
-        //Flag Component
-        ImageIcon flag = new ImageIcon("./img/flag.png");
-        flagHolder = new JLabel();
-        flagHolder.setBounds(55, 0, 300,200);
-        flagHolder.setIcon(flag);
-        flagHolder.setHorizontalAlignment(JLabel.CENTER);
 
-        //App Name Label
         appName = new JLabel("Spanish Noun Project");
         appName.setForeground(Color.WHITE);
         appName.setFont(new Font(font, Font.BOLD, 35));
         appName.setHorizontalAlignment(JLabel.CENTER);
-        appName.setBounds(15, 200, 370, 70);
+        appName.setBorder(BorderFactory.createMatteBorder(0,0,2,0, Color.red));
+        appName.setBounds(50, 20, 400, 70);
+        //Flag Component
+        ImageIcon flag = new ImageIcon("./img/flag.png");
+        flagHolder = new JLabel();
+        flagHolder.setBounds(100, 90, 300,200);
+        flagHolder.setIcon(flag);
+        flagHolder.setHorizontalAlignment(JLabel.CENTER);
+
+
+        usernameLabel = new JLabel("Username:");
+        usernameLabel.setFont(new Font(font, Font.BOLD, 15));
+        usernameLabel.setForeground(Color.WHITE);
+        usernameLabel.setBounds(50, 300, 150, 30);
 
         //Username TextField
         username = new JTextField();
-        username.setSize(400, 50 );
         username.setFont(new Font(font, Font.PLAIN, 25));
-        username.setBounds(70, 270, 250, 50);
+        username.setBounds(50, 330, 400, 40);
 
         //save and continue btn
         saveAndStart= new JButton();
-        saveAndStart.setBounds(100, 350, 150, 50);
+        saveAndStart.setBounds(100, 400, 300, 50);
         saveAndStart.setText("Let's Begin!");
-        saveAndStart.setBackground(Color.green);
+        saveAndStart.setBackground(new Color(1, 138, 15));
         saveAndStart.setForeground(Color.white);
         saveAndStart.addActionListener(this);
 
@@ -59,12 +63,11 @@ public class IntroPanel extends JPanel implements ActionListener {
         userList = uMap.getUserMap();
         System.out.println(userList);
         System.out.println(userList.size());
+
+
         this.setLayout(null);
-        this.setBackground(bgColor);
-        this.add(flagHolder);
-        this.add(appName);
-        this.add(username);
-        this.add(saveAndStart);
+        this.setBackground(bgColor); this.add(flagHolder); this.add(appName);
+        this.add(usernameLabel); this.add(username); this.add(saveAndStart);
     }
 
 

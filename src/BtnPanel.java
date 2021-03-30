@@ -23,24 +23,23 @@ public class BtnPanel extends JPanel implements ActionListener {
     BtnPanel(ChoicePanel choicePanel, User user){
         this.user = user;
         this.choicePanel = choicePanel;
-        this.setLayout(null);
+        this.setLayout(new GridLayout(3,2,  100, 100));
 
-        btnClothing = new DisplayBtn(20, 50, 50, 150, 24, "Clothing");
+        btnClothing = new DisplayBtn( 24, "Clothing");
         btnClothing.addActionListener(this);
         this.add(btnClothing);
 
-        btnFurniture = new DisplayBtn(20, 120, 50, 150, 24, "Furniture");
+        btnFurniture = new DisplayBtn( 24, "Furniture");
         btnFurniture.addActionListener(this);
         this.add(btnFurniture);
 
-        btnKitchen = new DisplayBtn(200, 50, 50, 150, 24,"Kitchen");
+        btnKitchen = new DisplayBtn( 24,"Kitchen");
         btnKitchen.addActionListener(this);
         this.add(btnKitchen);
 
-        btnTravel = new DisplayBtn(200, 170, 50, 170, 24, "Travel");
+        btnTravel = new DisplayBtn( 24, "Travel");
         btnTravel.addActionListener(this);
         this.add(btnTravel);
-
 
         this.setBackground(bgColor);
     }

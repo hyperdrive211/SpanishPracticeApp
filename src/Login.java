@@ -12,7 +12,8 @@ public class Login  extends JFrame implements ActionListener {
     private User user;
     private JLabel loginLabel, passwordLabel;
     private JPasswordField passWordTextfield;
-    private JButton ckBtn, cancelBtn;
+    private DisplayBtn btnLogin;
+    private JButton cancelButton;
     private Display display;
     private IntroPanel introPanel;
     private ChoicePanel chPanel;
@@ -50,13 +51,8 @@ public class Login  extends JFrame implements ActionListener {
         cancelBtn.setBounds(160, 250, 90, 50);
         cancelBtn.addActionListener(this);
 
-
-
-        this.add(loginLabel);
-        this.add(passWordTextfield);
-        this.add(passwordLabel);
-        this.add(ckBtn);
-        this.add(cancelBtn);
+        this.add(loginLabel); this.add(passWordTextfield); this.add(passwordLabel);
+        this.add(ckBtn); this.add(cancelBtn);
 
         this.setLayout(null);
         this.setSize(300, 400);

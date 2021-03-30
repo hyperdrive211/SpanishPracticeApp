@@ -7,12 +7,11 @@ import java.awt.*;
  **/
 public class DisplayBtn extends JButton {
 
-    DisplayBtn(int x, int y, int height, int width, int fontSize, String text){
+    DisplayBtn(int fontSize, String text){
         this.setText(text);
-        this.setBackground(Color.green);
+        this.setBackground(new Color(2, 138, 15));
         this.setFont(new Font("Sans-serif", Font.BOLD, fontSize));
         this.setForeground(Color.white);
-        this.setBounds(x, y, width, height);
     }
 
 }
