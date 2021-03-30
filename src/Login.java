@@ -39,23 +39,23 @@ public class Login  extends JFrame implements ActionListener {
 
 
         //Button styling and placement
-        ckBtn = new JButton("Login");
-        ckBtn.setForeground(Color.white);
-        ckBtn.setBackground(Color.green);
-        ckBtn.setBounds(50, 250, 90, 50);
-        ckBtn.addActionListener(this);
+        btnLogin = new DisplayBtn(15, "Login");
+        btnLogin.setForeground(Color.white);
+        btnLogin.setBackground(Color.green);
+        btnLogin.setBounds(50, 250, 90, 50);
+        btnLogin.addActionListener(this);
 
-        cancelBtn = new JButton("Cancel");
-        cancelBtn.setBackground(Color.green);
-        cancelBtn.setForeground(Color.white);
-        cancelBtn.setBounds(160, 250, 90, 50);
-        cancelBtn.addActionListener(this);
+        cancelButton = new JButton("Cancel");
+        cancelButton.setBackground(Color.green);
+        cancelButton.setForeground(Color.white);
+        cancelButton.setBounds(160, 250, 90, 50);
+        cancelButton.addActionListener(this);
 
         this.add(loginLabel); this.add(passWordTextfield); this.add(passwordLabel);
-        this.add(ckBtn); this.add(cancelBtn);
+        this.add(loginLabel); this.add(cancelButton);
 
         this.setLayout(null);
-        this.setSize(300, 400);
+        this.setSize(300, 500);
         this.setTitle("Login");
         this.setResizable(false);
         this.setVisible(true);
@@ -65,10 +65,10 @@ public class Login  extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == cancelBtn){
+        if(e.getSource() == cancelButton){
             this.dispose();
         }
-        if(e.getSource() == ckBtn){
+        if(e.getSource() == btnLogin){
             if(String.valueOf(passWordTextfield.getPassword()).equals(user.getPassword()))
             {
                chPanel = new ChoicePanel(user);
