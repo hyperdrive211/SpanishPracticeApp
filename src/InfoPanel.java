@@ -7,27 +7,37 @@ import java.awt.*;
  **/
 public class InfoPanel extends JPanel {
 
-    String name;
-    JLabel nameLabel, welcomeLabel;
-    Color bgColor = new Color(110,192,248);
+    User user;
+    JLabel nameLabel, welcomeLabel, nameText, welcomeMessage, scoreLabel;
+    DefaultPanel namePanel;
+    private Design design = new Design();
 
-    InfoPanel(){
+    InfoPanel(User user){
+        this.user = user;
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(design.bgColor);
+        this.setAlignmentX(JPanel.LEFT_ALIGNMENT);
+        namePanel = new DefaultPanel();
+        namePanel.setAlignmentX(JPanel.LEFT_ALIGNMENT);
+        BoxLayout boxLayout = new BoxLayout(namePanel, BoxLayout.X_AXIS);
+        namePanel.setLayout(boxLayout);
+        nameLabel = new JLabel("Name:" , JLabel.LEFT);
+        nameLabel.setForeground(design.underLine);
+        nameLabel.setFont(new Font(design.fontName, Font.BOLD, 30));
+        namePanel.add(nameLabel);
 
-    }
+        nameText = new JLabel("", JLabel.LEFT);
+        nameText.setForeground(Color.WHITE);
+        nameText.setFont(new Font(design.fontName, Font.BOLD, 30));
+        namePanel.add(nameText);
 
-    InfoPanel(String name){
-        this.name = name;
-        this.setLayout(new GridLayout(2,1));
-        this.setBackground(bgColor);
-        nameLabel = new JLabel("Name:" + this.name);
-        nameLabel.setForeground(Color.white);
-        nameLabel.setFont(new Font("Sans-serif", Font.BOLD, 30));
-        welcomeLabel = new JLabel("Welcome!\nToday we are gonna learn some Spanish!");
+        this.add(namePanel);
+
+        welcomeLabel = new JLabel("Welcome!", JLabel.LEFT);
         welcomeLabel.setForeground(Color.white);
         welcomeLabel.setFont(new Font("Sans-serif", Font.BOLD, 20));
-        this.add(nameLabel);
+
         this.add(welcomeLabel);
-        this.setSize(new Dimension(400,100));
     }
 
 }

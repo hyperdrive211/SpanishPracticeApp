@@ -9,16 +9,16 @@ public class QuestionList {
 
     ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
     public ArrayList<PracticeQuestion> clothingList(){
-      clothing.add(new PracticeQuestion("img/clothing/coat_200X200.jpg", "Coat", "Abrigo"));
-      clothing.add(new PracticeQuestion("img/clothing/gloves_200x200.png", "Gloves", "Guantes"));
-      clothing.add(new PracticeQuestion("img/clothing/shirt_200x200.jpg", "Shirt", "Camisa"));
-      clothing.add(new PracticeQuestion("img/clothing/trousers_200x200.jpg", "Trousers", "Pantalones"));
-      clothing.add(new PracticeQuestion("img/clothing/glasses_200x200.jpg", "Glasses", "Lentes"));
-      clothing.add(new PracticeQuestion("img/clothing/hat_200x200.jpg", "Hat", "Sombrero"));
-      clothing.add(new PracticeQuestion("img/clothing/t-shirt_200x200.png", "T-Shirt", "Camiseta"));
-      clothing.add(new PracticeQuestion("img/clothing/tie_200x200.jpg", "Tie", "Corbatta"));
-      clothing.add(new PracticeQuestion("img/clothing/shoes_200x200.jpeg", "Shoes", "Zapatoes"));
-      clothing.add(new PracticeQuestion("img/clothing/skirt_200x200.jpeg", "Skirt", "Falda"));
+      clothing.add(new PracticeQuestion("img/clothing/coat_200X200.jpg", "Coat", "el abrigo"));
+      clothing.add(new PracticeQuestion("img/clothing/gloves_200x200.png", "Gloves", "los guantes"));
+      clothing.add(new PracticeQuestion("img/clothing/shirt_200x200.jpg", "Shirt", "la camisa"));
+      clothing.add(new PracticeQuestion("img/clothing/trousers_200x200.jpg", "Trousers", "los pantalones"));
+      clothing.add(new PracticeQuestion("img/clothing/glasses_200x200.jpg", "Glasses", "los lentes"));
+      clothing.add(new PracticeQuestion("img/clothing/hat_200x200.jpg", "Hat", "el sombrero"));
+      clothing.add(new PracticeQuestion("img/clothing/t-shirt_200x200.png", "T-Shirt", "la camiseta"));
+      clothing.add(new PracticeQuestion("img/clothing/tie_200x200.jpg", "Tie", "la corbatta"));
+      clothing.add(new PracticeQuestion("img/clothing/shoes_200x200.jpeg", "Shoes", "los zapatoes"));
+      clothing.add(new PracticeQuestion("img/clothing/skirt_200x200.jpeg", "Skirt", "la falda"));
       return clothing;
     }
 

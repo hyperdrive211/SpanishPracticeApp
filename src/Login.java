@@ -8,30 +8,29 @@ import java.awt.event.ActionListener;
  * Update Comments About Program Here
  **/
 public class Login  extends JFrame implements ActionListener {
-    private String font = "Sans-serif";
+    private Design design = new Design();
     private User user;
     private JLabel loginLabel, passwordLabel;
     private JPasswordField passWordTextfield;
-    private DisplayBtn btnLogin;
-    private JButton cancelButton;
+    private DisplayBtn btnLogin, cancelButton;
     private Display display;
     private IntroPanel introPanel;
     private ChoicePanel chPanel;
 
     Login(User user, Display display){
         this.user = user;
-        this.getContentPane().setBackground(new Color(110,192,248));
+        this.getContentPane().setBackground(design.bgColor);
         this.display = display;
         this.introPanel = display.getIp();
 
         loginLabel = new JLabel("Login");
         loginLabel.setForeground(Color.white);
-        loginLabel.setFont(new Font(font, Font.BOLD, 35));
+        loginLabel.setFont(new Font(design.fontName, Font.BOLD, 35));
         loginLabel.setBounds(100, 50, 100, 75);
 
         passwordLabel = new JLabel("Enter Password:");
         passwordLabel.setForeground(Color.WHITE);
-        passwordLabel.setFont(new Font(font, Font.BOLD, 20));
+        passwordLabel.setFont(new Font(design.fontName, Font.BOLD, 20));
         passwordLabel.setBounds(50, 100, 200, 50);
 
         passWordTextfield = new JPasswordField();
@@ -39,20 +38,16 @@ public class Login  extends JFrame implements ActionListener {
 
 
         //Button styling and placement
-        btnLogin = new DisplayBtn(15, "Login");
-        btnLogin.setForeground(Color.white);
-        btnLogin.setBackground(Color.green);
+        btnLogin = new DisplayBtn(design.success, 15, "Login");
         btnLogin.setBounds(50, 250, 90, 50);
         btnLogin.addActionListener(this);
 
-        cancelButton = new JButton("Cancel");
-        cancelButton.setBackground(Color.green);
-        cancelButton.setForeground(Color.white);
+        cancelButton = new DisplayBtn(design.failure, 15,"Cancel");
         cancelButton.setBounds(160, 250, 90, 50);
         cancelButton.addActionListener(this);
 
         this.add(loginLabel); this.add(passWordTextfield); this.add(passwordLabel);
-        this.add(loginLabel); this.add(cancelButton);
+        this.add(loginLabel); this.add(cancelButton); this.add(btnLogin);
 
         this.setLayout(null);
         this.setSize(300, 500);
@@ -75,7 +70,6 @@ public class Login  extends JFrame implements ActionListener {
                introPanel.setVisible(false);
                display.add(chPanel);
                this.dispose();
-
             }
         }
 

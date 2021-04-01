@@ -12,36 +12,65 @@ public class BtnPanel extends JPanel implements ActionListener {
 
     //in this class we get the Array lists of nouns and create a new question panel on the basis of the noun list.
     ChoicePanel choicePanel;
-    Color bgColor = new Color(110,192,248);
     DisplayBtn btnClothing, btnTravel, btnKitchen, btnFurniture;
-    String questionDef = "";
     User user;
     QuestionPanel qPanel;
     QuestionList questionList = new QuestionList();
+    Design design = new Design();
+    JPanel buttonContainer, fillerLeft, fillerRight, fillerSouth;
+    JLabel topicChoice;
 
 
     BtnPanel(ChoicePanel choicePanel, User user){
         this.user = user;
         this.choicePanel = choicePanel;
-        this.setLayout(new GridLayout(3,2,  100, 100));
+        this.setLayout(new BorderLayout(70, 70));
 
-        btnClothing = new DisplayBtn( 24, "Clothing");
+        topicChoice = new JLabel("Select a Topic!", JLabel.CENTER);
+        topicChoice.setFont(new Font(design.fontName, Font.BOLD, 25));
+        topicChoice.setForeground(design.text);
+        topicChoice.setBorder(BorderFactory.createMatteBorder(0,0,2,0, design.underLine));
+        this.add(topicChoice, BorderLayout.NORTH);
+
+
+        buttonContainer = new JPanel();
+        buttonContainer.setLayout(new GridLayout(2,2,  20, 20));
+        buttonContainer.setBorder(BorderFactory.createLineBorder(design.text, 2));
+        buttonContainer.setBackground(design.bgColor);
+
+
+        btnClothing = new DisplayBtn( design.success,24, "Clothing");
         btnClothing.addActionListener(this);
-        this.add(btnClothing);
+        buttonContainer.add(btnClothing);
 
-        btnFurniture = new DisplayBtn( 24, "Furniture");
+        btnFurniture = new DisplayBtn( design.success,24, "Furniture");
         btnFurniture.addActionListener(this);
-        this.add(btnFurniture);
+        buttonContainer.add(btnFurniture);
 
-        btnKitchen = new DisplayBtn( 24,"Kitchen");
+        btnKitchen = new DisplayBtn( design.success, 24,"Kitchen");
         btnKitchen.addActionListener(this);
-        this.add(btnKitchen);
+        buttonContainer.add(btnKitchen);
 
-        btnTravel = new DisplayBtn( 24, "Travel");
+        btnTravel = new DisplayBtn( design.success, 24, "Travel");
         btnTravel.addActionListener(this);
-        this.add(btnTravel);
+        buttonContainer.add(btnTravel);
 
-        this.setBackground(bgColor);
+        //filler components
+        fillerLeft = new JPanel();
+        fillerLeft.setBackground(design.bgColor);
+        this.add(fillerLeft, BorderLayout.WEST);
+
+        fillerRight = new JPanel();
+        fillerRight.setBackground(design.bgColor);
+        this.add(fillerRight, BorderLayout.EAST);
+
+        fillerSouth  = new JPanel();
+        fillerSouth.setBackground(design.bgColor);
+        this.add(fillerSouth, BorderLayout.SOUTH);
+
+
+        this.add(buttonContainer, BorderLayout.CENTER);
+        this.setBackground(design.bgColor);
     }
 
     @Override
@@ -54,7 +83,7 @@ public class BtnPanel extends JPanel implements ActionListener {
 
     public void changePanels(ArrayList<PracticeQuestion> questions, String questionDef){
         System.out.println("Button has been pressed!");
-        qPanel = new QuestionPanel(user, questions, choicePanel, questionDef);
+        qPanel = new QuestionPanel(user, questions, questionDef);
         choicePanel.add(qPanel, BorderLayout.CENTER);
         choicePanel.btnPanel.setVisible(false);
     }

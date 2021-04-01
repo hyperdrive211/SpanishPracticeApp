@@ -10,12 +10,11 @@ public class ChoicePanel extends JPanel {
     BtnPanel btnPanel;
     InfoPanel infoPanel;
     User user;
-    Color bgColor = new Color(110,192,248);
 
     ChoicePanel(User user){
         this.user = user;
-        this.setLayout(new BorderLayout());
-        infoPanel= new InfoPanel(user.getName());
+        this.setLayout(new BorderLayout(20, 0));
+        infoPanel= new InfoPanel(user);
         btnPanel = new BtnPanel(this, user);
         this.add(infoPanel, BorderLayout.NORTH);
         this.add(btnPanel, BorderLayout.CENTER);

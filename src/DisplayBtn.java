@@ -7,11 +7,13 @@ import java.awt.*;
  **/
 public class DisplayBtn extends JButton {
 
-    DisplayBtn(int fontSize, String text){
+    Design design = new Design();
+
+    DisplayBtn(Color buttonColor,int fontSize, String text){
         this.setText(text);
-        this.setBackground(new Color(2, 138, 15));
+        this.setBackground(buttonColor);
         this.setFont(new Font("Sans-serif", Font.BOLD, fontSize));
-        this.setForeground(Color.white);
+        this.setForeground(design.text);
     }
 
 }

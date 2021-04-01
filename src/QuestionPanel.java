@@ -12,7 +12,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
     PracticeQuestion pq = new PracticeQuestion();
     //this is the question list that we take in from the the each of the lists
     ArrayList<PracticeQuestion> pqList = new ArrayList<PracticeQuestion>();
-
     //on each correct question answer this will be added to a new list for the display on the next screen.
     ArrayList<PracticeQuestion> returnPQList = new ArrayList<PracticeQuestion>();
     UserMap userMap;
@@ -20,13 +19,14 @@ public class QuestionPanel extends JPanel implements ActionListener {
     ImageIcon img;
     JLabel holdIMG;
     JTextField input;
-    JButton btnCheck;
+    DisplayBtn btnCheck, btnSkip;
+    JPanel feedbackPanel;
     JLabel feedBack;
     String questionDef;
     int questionCount = 0;
     //2 second delay for
     int elapsedTime = 2000;
-    Color bgColor = new Color(110,192,248);
+    private Design design = new Design();
     JFrame frame;
 
     Timer timer = new Timer(1000, new ActionListener(){
@@ -41,7 +41,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         }
     });
 
-    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel, String questionDef){
+    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, String questionDef){
         this.questionDef = questionDef;
         pqList = questions;
         pq = pqList.get(questionCount);
@@ -49,31 +49,38 @@ public class QuestionPanel extends JPanel implements ActionListener {
         img = new ImageIcon(pq.getImgURL());
         holdIMG = new JLabel();
         holdIMG.setIcon(img);
-        this.setBackground(bgColor);
+        this.setBackground(design.bgColor);
         input = new JTextField();
-        btnCheck = new JButton("Check Answer!");
-        btnCheck.setBackground(Color.green);
-        btnCheck.setForeground(Color.white);
 
-        feedBack = new JLabel("");
-        feedBack.setForeground(Color.WHITE);
+
+        btnCheck = new DisplayBtn(design.success, 15, "Check Answer");
+        btnCheck.addActionListener(this);
+
+        btnSkip = new DisplayBtn(design.failure, 15, "Skip Question");
+        btnSkip.addActionListener(this);
+
+        feedBack = new JLabel("", JLabel.CENTER);
+        feedBack.setFont(new Font(design.fontName,  Font.BOLD, 20));
+        feedBack.setForeground(design.text);
 
         //Layout Components
         this.setLayout(null);
 
-        holdIMG.setBounds(100, 20, 200, 200);
+        holdIMG.setBounds(150, 20, 200, 200);
 
         holdIMG.setBorder(BorderFactory.createLineBorder(Color.black));
-        input.setBounds(100, 250, 200, 50);
-        feedBack.setBounds(100, 310, 150, 50);
-        btnCheck.setBounds(100, 370, 150, 50);
+        input.setBounds(125, 250, 250, 50);
+        feedbackPanel = new JPanel();
+        feedbackPanel.setLayout(new BorderLayout());
+        feedbackPanel.setBackground(design.bgColor);
+        feedbackPanel.setBounds(125, 310, 250, 50);
+        feedbackPanel.add(feedBack, BorderLayout.CENTER);
 
-        btnCheck.addActionListener(this);
+        btnCheck.setBounds(150, 370, 200, 50);
 
-        this.add(holdIMG);
-        this.add(input);
-        this.add(feedBack);
-        this.add(btnCheck);
+
+        this.add(holdIMG); this.add(input);
+        this.add(feedbackPanel); this.add(btnCheck);
     }
 
     private void answerDisplay(boolean correct){
@@ -81,19 +88,19 @@ public class QuestionPanel extends JPanel implements ActionListener {
         btnCheck.setEnabled(false);
         if(correct) {
             timer.start();
-            this.setBackground(Color.green);
             returnPQList.add(new PracticeQuestion(pq.getNounAnswer(), pq.getNounQuestion(), input.getText(), true));
             feedBack.setText("Correct!");
+            feedbackPanel.setBackground(design.success);
         }
         else {
-            this.setBackground(Color.RED);
-            feedBack.setText("Incorrect");
+            feedBack.setText("Incorrect!");
             timer.start();
+            feedbackPanel.setBackground(design.failure);
         }
     }
 
     void reset(){
-        this.setBackground(bgColor);
+        feedbackPanel.setBackground(design.bgColor);
         feedBack.setText("");
         input.setText("");
         btnCheck.setEnabled(true);
