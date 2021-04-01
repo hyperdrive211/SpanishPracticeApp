@@ -26,9 +26,8 @@ public class QuestionPanel extends JPanel implements ActionListener {
     int questionCount = 0;
     //2 second delay for
     int elapsedTime = 2000;
+    ChoicePanel choicePanel;
     private Design design = new Design();
-    JFrame frame;
-
     Timer timer = new Timer(1000, new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -41,7 +40,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         }
     });
 
-    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, String questionDef){
+    QuestionPanel(User user, ArrayList<PracticeQuestion> questions, ChoicePanel choicePanel, String questionDef){
         this.questionDef = questionDef;
         pqList = questions;
         pq = pqList.get(questionCount);
@@ -51,8 +50,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         holdIMG.setIcon(img);
         this.setBackground(design.bgColor);
         input = new JTextField();
-
-
+        this.choicePanel = choicePanel;
         btnCheck = new DisplayBtn(design.success, 15, "Check Answer");
         btnCheck.addActionListener(this);
 
@@ -77,8 +75,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
         feedbackPanel.add(feedBack, BorderLayout.CENTER);
 
         btnCheck.setBounds(150, 370, 200, 50);
-
-
         this.add(holdIMG); this.add(input);
         this.add(feedbackPanel); this.add(btnCheck);
     }
@@ -153,9 +149,9 @@ public class QuestionPanel extends JPanel implements ActionListener {
     }
 
     void clearPanelAddSummary(){
-        JFrame frame = (JFrame) SwingUtilities.getRoot(this);
-        frame.repaint();
-        frame.add(new SummaryPanel(user, returnPQList, questionDef));
+        this.setVisible(false);
+        SummaryPanel summaryPanel = new SummaryPanel(user, returnPQList, questionDef);
+        choicePanel.add(summaryPanel);
     }
 
 
@@ -168,6 +164,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
             if(pq.getNounAnswer().equalsIgnoreCase(answer)){
                 answerDisplay(true);
                 questionCount++;
+
                 timer.start();
             }
             else{

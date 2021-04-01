@@ -83,7 +83,7 @@ public class BtnPanel extends JPanel implements ActionListener {
 
     public void changePanels(ArrayList<PracticeQuestion> questions, String questionDef){
         System.out.println("Button has been pressed!");
-        qPanel = new QuestionPanel(user, questions, questionDef);
+        qPanel = new QuestionPanel(user, questions, choicePanel, questionDef);
         choicePanel.add(qPanel, BorderLayout.CENTER);
         choicePanel.btnPanel.setVisible(false);
     }
