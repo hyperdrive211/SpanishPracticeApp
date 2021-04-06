@@ -16,14 +16,14 @@ public class QuestionPanel extends JPanel implements ActionListener {
     ArrayList<PracticeQuestion> returnPQList = new ArrayList<PracticeQuestion>();
     UserMap userMap;
     User user;
-    ImageIcon img;
-    JLabel holdIMG;
-    JTextField input;
-    DisplayBtn btnCheck, btnSkip;
-    JPanel feedbackPanel;
-    JLabel feedBack;
-    String questionDef;
-    int questionCount = 0;
+    private ImageIcon img;
+    private JLabel holdIMG;
+    private JTextField input;
+    private DisplayBtn btnCheck, btnSkip;
+    private JPanel feedbackPanel;
+    private JLabel feedBack;
+    private String questionDef;
+    private int questionCount = 0;
     //2 second delay for
     int elapsedTime = 2000;
     ChoicePanel choicePanel;
@@ -32,10 +32,8 @@ public class QuestionPanel extends JPanel implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
          elapsedTime -= 1000;
-            System.out.println(elapsedTime);
          if(elapsedTime == 0){
-             getNextQuestion(questionCount);
-             timer.stop();
+             getNextQuestion();
          }
         }
     });
@@ -75,24 +73,34 @@ public class QuestionPanel extends JPanel implements ActionListener {
         feedbackPanel.add(feedBack, BorderLayout.CENTER);
 
         btnCheck.setBounds(150, 370, 200, 50);
+
+        btnSkip.setBounds(150, 430, 200, 50);
+        btnSkip.setVisible(false);
         this.add(holdIMG); this.add(input);
-        this.add(feedbackPanel); this.add(btnCheck);
+        this.add(feedbackPanel); this.add(btnCheck); this.add(btnSkip);
     }
 
-    private void answerDisplay(boolean correct){
+    private void answerDisplay(String context, String answer){
         elapsedTime = 2000;
-        btnCheck.setEnabled(false);
-        if(correct) {
-            timer.start();
-            returnPQList.add(new PracticeQuestion(pq.getNounAnswer(), pq.getNounQuestion(), input.getText(), true));
-            feedBack.setText("Correct!");
-            feedbackPanel.setBackground(design.success);
+        if(context.equals("Skipped!") || context.equals("Correct!")) {
+            PracticeQuestion practiceQuestion = new PracticeQuestion(pq.getNounAnswer(), pq.getNounQuestion(), answer);
+            if (context.equals("Skipped")) {
+                practiceQuestion.setCorrect(false);
+                feedbackPanel.setBackground(design.failure);
+            } else{
+                practiceQuestion.setCorrect(true);
+                feedbackPanel.setBackground(design.success);
+            }
+            returnPQList.add(practiceQuestion);
+            questionCount++;
         }
         else {
-            feedBack.setText("Incorrect!");
-            timer.start();
             feedbackPanel.setBackground(design.failure);
+            btnSkip.setVisible(true);
         }
+        btnCheck.setEnabled(false);
+        feedBack.setText(context);
+        timer.start();
     }
 
     void reset(){
@@ -102,8 +110,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         btnCheck.setEnabled(true);
     }
 
-    void getNextQuestion(int questionCount){
-        System.out.println(questionCount);
+    void getNextQuestion(){
       if(questionCount == pqList.size()){
             endTask();
             clearPanelAddSummary();
@@ -112,7 +119,9 @@ public class QuestionPanel extends JPanel implements ActionListener {
           reset();
           pq = pqList.get(questionCount);
           holdIMG.setIcon(new ImageIcon(pq.getImgURL()));
+          btnSkip.setVisible(false);
       }
+      timer.stop();
     }
 
     //At the end of the question list we will set the value and date of the last time the test was complete.
@@ -132,7 +141,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
                 score++;
             }
         }
-
         return score;
     }
 
@@ -150,6 +158,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     void clearPanelAddSummary(){
         this.setVisible(false);
+        System.out.println(getScore());
         SummaryPanel summaryPanel = new SummaryPanel(user, returnPQList, questionDef);
         choicePanel.add(summaryPanel);
     }
@@ -158,19 +167,17 @@ public class QuestionPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String answer;
+        answer = input.getText().toLowerCase();
         if(e.getSource() == btnCheck){
-            answer = input.getText().toLowerCase();
-            System.out.println(pq.getNounAnswer());
             if(pq.getNounAnswer().equalsIgnoreCase(answer)){
-                answerDisplay(true);
-                questionCount++;
-
-                timer.start();
+                answerDisplay("Correct!", answer);
             }
             else{
-                answerDisplay(false);
+                answerDisplay("Incorrect!", answer);
             }
         }
-
+        if(e.getSource() == btnSkip){
+            answerDisplay("Skipped!", answer);
+        }
     }
 }

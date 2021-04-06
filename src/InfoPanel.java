@@ -26,7 +26,7 @@ public class InfoPanel extends JPanel {
         nameLabel.setFont(new Font(design.fontName, Font.BOLD, 30));
         namePanel.add(nameLabel);
 
-        nameText = new JLabel("", JLabel.LEFT);
+        nameText = new JLabel(user.getName(), JLabel.LEFT);
         nameText.setForeground(Color.WHITE);
         nameText.setFont(new Font(design.fontName, Font.BOLD, 30));
         namePanel.add(nameText);

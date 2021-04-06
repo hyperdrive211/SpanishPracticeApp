@@ -4,7 +4,7 @@ import java.lang.String.*;
  * Update Comments About Program Here
  **/
 public class PracticeQuestion {
-    private String imgURL, nounQuestion, nounAnswer, userAnswer;
+    private String imgURL, nounQuestion, nounAnswer, userAnswer, audioFileName;
     private boolean isCorrect;
 
     //Default constructor
@@ -18,12 +18,6 @@ public class PracticeQuestion {
         this.nounAnswer = nounA;
     }
 
-    PracticeQuestion(String nounQ, String nounA, String userAnswer, Boolean isCorrect){
-        this.nounQuestion = nounQ;
-        this.nounAnswer = nounA;
-        this.userAnswer = userAnswer;
-        this.isCorrect = isCorrect;
-    }
 
     public String getNounQuestion() {
         return nounQuestion;
@@ -67,5 +61,18 @@ public class PracticeQuestion {
 
     public void setUserAnswer(String userAnswer) {
         this.userAnswer = userAnswer;
+    }
+
+    public String getAudioFileName(){
+        return this.audioFileName;
+    }
+
+    public void setAudioFileName(String audioFileName){
+        this.audioFileName = audioFileName;
+    }
+
+    public String toString(){
+        return String.format("Noun Question: %s\n Noun Answer: %s \nUser Answer: %s",
+                this.nounQuestion, this.nounAnswer, this.userAnswer);
     }
 }
