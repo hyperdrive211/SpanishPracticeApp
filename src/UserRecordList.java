@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -11,6 +8,10 @@ import java.util.ArrayList;
 public class UserRecordList {
     private ArrayList<UserRecord> recordList = new ArrayList<UserRecord>();
     private String filename = "Records/UserRecords";
+
+    UserRecordList(){
+
+    }
 
 
     public void getData(){
@@ -28,11 +29,26 @@ public class UserRecordList {
         }
     }
 
+    public ArrayList<UserRecord> getUserRecords(){
+        return this.recordList;
+    }
+
+    public void saveData(){
+        try{
+            FileOutputStream fos = new FileOutputStream(filename);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(this.recordList);
+            oos.close();
+            fos.close();
+        } catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
     public void addRecord(UserRecord record){
         this.recordList.add(record);
     }
-
-
 
 
     public ArrayList<UserRecord> getRecordByUsername(String username){

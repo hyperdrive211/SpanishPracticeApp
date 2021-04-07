@@ -14,6 +14,7 @@ public class DisplayBtn extends JButton {
         this.setBackground(buttonColor);
         this.setFont(new Font("Sans-serif", Font.BOLD, fontSize));
         this.setForeground(design.text);
+        this.setFocusPainted(false);
     }
 
 }

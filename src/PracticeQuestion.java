@@ -18,7 +18,6 @@ public class PracticeQuestion {
         this.nounAnswer = nounA;
     }
 
-
     public String getNounQuestion() {
         return nounQuestion;
     }

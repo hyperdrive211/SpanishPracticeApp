@@ -14,12 +14,14 @@ public class SummaryPanel extends JPanel implements ActionListener {
     ArrayList<PracticeQuestion> feedBackList;
     Design design = new Design();
     JLabel resultImage, userInfo, header, topicHeader, sectionHeader;
-    JPanel firstDisplay, leaderBoardPanel, resultsPanel;
+    JPanel leaderBoardPanel, resultsPanel, buttonPanel, historyPanel;
     JLabel [] eachAnswerResult, leaderBoard;
-    JButton showLeaderBoard;
+    DisplayBtn historyBtn, summaryButton, leaderBoardButton;
     String section;
     GridBagLayout gridBagLayout = new GridBagLayout();
     GridBagConstraints gbc = new GridBagConstraints();
+    UserRecordList userRecordList = new UserRecordList();
+    ArrayList<UserRecord> userRecords = new ArrayList<UserRecord>();
 
 
     SummaryPanel(User user, ArrayList<PracticeQuestion> returnList, String section){
@@ -28,6 +30,8 @@ public class SummaryPanel extends JPanel implements ActionListener {
         this.section = section;
         this.setBackground(design.bgColor);
         this.setLayout(null);
+        System.out.println(section);
+        userRecordList.getData();
 
         header = new JLabel("Result Summary", JLabel.CENTER);
         header.setFont(new Font(design.fontName, Font.BOLD, 20));
@@ -47,15 +51,30 @@ public class SummaryPanel extends JPanel implements ActionListener {
 
         //Set the progress image with a correct/incorrect emoji!
         resultImage = new JLabel();
-        eachAnswerResult = new JLabel [10];
+        eachAnswerResult = new JLabel [returnList.size()];
         resultsPanel = new JPanel();
         resultsPanel.setLayout(gridBagLayout);
 
+        buttonPanel = new JPanel();
+        buttonPanel.setBackground(design.bgColor);
+
+        buttonPanel.setLayout(new GridLayout(1,3, 10,0));
+        buttonPanel.setBounds(75, 410, 350, 30);
+
+        summaryButton = new DisplayBtn(design.success, 9, "Summary");
+        summaryButton.setEnabled(false);
+        buttonPanel.add(summaryButton);
+
+        historyBtn = new DisplayBtn(design.underLine, 9, " History");
+        buttonPanel.add(historyBtn);
+
+        leaderBoardButton = new DisplayBtn(design.underLine, 9, "Leader board");
+        buttonPanel.add(leaderBoardButton);
         returnFeedBack(returnList, resultsPanel);
-        resultsPanel.setBounds(100, 50, 300, 300);
+        resultsPanel.setBounds(75, 90, 350, 300);
         resultsPanel.setBorder(BorderFactory.createLineBorder(design.underLine, 2));
         this.add(header); this.add(resultsPanel); this.add(header); this.add(topicHeader);
-        this.setBounds(20, 20, 500, 500);
+        this.add(sectionHeader); this.add(buttonPanel);
     }
 
     public void returnFeedBack(ArrayList<PracticeQuestion> fbList, JPanel panel){
@@ -63,29 +82,24 @@ public class SummaryPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         for(int i = 0; i < fbList.size(); i++){
             System.out.println(fbList.get(i).toString());
-            gbc.gridy = i; gbc.gridx = 0; gbc.gridwidth = 2;
+            gbc.gridy = i; gbc.gridx = 0; gbc.gridwidth = 1;
             JLabel questionNumber = new JLabel(String.valueOf(i+1), JLabel.LEFT);
             resultsPanel.add(questionNumber, gbc);
 
-            gbc.gridy = i; gbc.gridx = 3; gbc.gridwidth = 3;
+            gbc.gridy = i; gbc.gridx = 2; gbc.gridwidth = 5;
             JLabel labelEnglish = new JLabel(fbList.get(i).getNounQuestion(), JLabel.LEFT);
             resultsPanel.add(labelEnglish, gbc);
 
-            gbc.gridy= i; gbc.gridx = 6; gbc.gridwidth = 3;
+            gbc.gridy= i; gbc.gridx = 7; gbc.gridwidth = 5;
             JLabel labelSpanish = new JLabel(fbList.get(i).getNounAnswer(), JLabel.LEFT);
             resultsPanel.add(labelSpanish, gbc);
 
-            gbc.gridy = i; gbc.gridx= 9; gbc.gridwidth = 3;
-            JLabel labelAnswer = new JLabel((fbList.get(i).getUserAnswer() != null) ?
+            gbc.gridy = i; gbc.gridx= 12; gbc.gridwidth = 5;
+            JLabel labelAnswer = new JLabel((!fbList.get(i).getUserAnswer().equals("")) ?
                     fbList.get(i).getUserAnswer() : "N/A", JLabel.LEFT);
             resultsPanel.add(labelAnswer, gbc);
-
-
         }
-
-
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
