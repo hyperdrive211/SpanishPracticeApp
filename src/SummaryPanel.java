@@ -30,7 +30,6 @@ public class SummaryPanel extends JPanel implements ActionListener {
         this.section = section;
         this.setBackground(design.bgColor);
         this.setLayout(null);
-        System.out.println(section);
         userRecordList.getData();
 
         header = new JLabel("Result Summary", JLabel.CENTER);
@@ -70,35 +69,67 @@ public class SummaryPanel extends JPanel implements ActionListener {
 
         leaderBoardButton = new DisplayBtn(design.underLine, 9, "Leader board");
         buttonPanel.add(leaderBoardButton);
-        returnFeedBack(returnList, resultsPanel);
+        returnFeedBack(returnList);
         resultsPanel.setBounds(75, 90, 350, 300);
         resultsPanel.setBorder(BorderFactory.createLineBorder(design.underLine, 2));
+
+        historyPanel = new JPanel();
+        historyPanel.setLayout(new GridLayout());
+        historyPanel.setBounds(75, 90, 350, 300);
+        historyPanel.setBorder(BorderFactory.createLineBorder(design.underLine, 2));
+        historyPanel.setVisible(true);
+
+
         this.add(header); this.add(resultsPanel); this.add(header); this.add(topicHeader);
-        this.add(sectionHeader); this.add(buttonPanel);
+        this.add(sectionHeader); this.add(buttonPanel); this.add(historyPanel);
     }
 
-    public void returnFeedBack(ArrayList<PracticeQuestion> fbList, JPanel panel){
+    public void returnFeedBack(ArrayList<PracticeQuestion> fbList){
         gbc.insets = new Insets(0, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         for(int i = 0; i < fbList.size(); i++){
             System.out.println(fbList.get(i).toString());
-            gbc.gridy = i; gbc.gridx = 0; gbc.gridwidth = 1;
+            gbc.gridy = i;
+            gbc.gridx = 0; gbc.gridwidth = 1;
             JLabel questionNumber = new JLabel(String.valueOf(i+1), JLabel.LEFT);
             resultsPanel.add(questionNumber, gbc);
 
-            gbc.gridy = i; gbc.gridx = 2; gbc.gridwidth = 5;
+            gbc.gridx = 2; gbc.gridwidth = 5;
             JLabel labelEnglish = new JLabel(fbList.get(i).getNounQuestion(), JLabel.LEFT);
             resultsPanel.add(labelEnglish, gbc);
 
-            gbc.gridy= i; gbc.gridx = 7; gbc.gridwidth = 5;
+            gbc.gridx = 7; gbc.gridwidth = 5;
             JLabel labelSpanish = new JLabel(fbList.get(i).getNounAnswer(), JLabel.LEFT);
             resultsPanel.add(labelSpanish, gbc);
 
-            gbc.gridy = i; gbc.gridx= 12; gbc.gridwidth = 5;
+            gbc.gridx= 12; gbc.gridwidth = 5;
             JLabel labelAnswer = new JLabel((!fbList.get(i).getUserAnswer().equals("")) ?
                     fbList.get(i).getUserAnswer() : "N/A", JLabel.LEFT);
             resultsPanel.add(labelAnswer, gbc);
         }
+    }
+
+    public void setHistoryPanel(){
+        userRecords = userRecordList.getRecordByUsername(user.getUsername());
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(0,5,5,0);
+
+        for(int i  = 0; i < userRecords.size(); i++){
+            System.out.println(userRecords.get(i).toString());
+            gbc.gridy = i;
+            JLabel dateComplete = new JLabel(userRecords.get(i).getDateCompleteString(), JLabel.LEFT);
+            gbc.gridx = 0; gbc.gridwidth = 4;
+            historyPanel.add(dateComplete, gbc);
+
+            JLabel topic = new JLabel(userRecords.get(i).getTopic(), JLabel.LEFT);
+            gbc.gridx = 4; gbc.gridwidth = 4;
+            historyPanel.add(topic, gbc);
+
+            JLabel score = new JLabel(String.valueOf(userRecords.get(i).getScore()), JLabel.LEFT);
+            gbc.gridx = 8;  gbc.gridwidth = 4;
+            historyPanel.add(score, gbc);
+        }
+
     }
 
     @Override

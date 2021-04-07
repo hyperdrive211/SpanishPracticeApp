@@ -28,4 +28,16 @@ public class UserRecord {
     public String toString(){
         return String.format("%s %s %s %d", this.username, sdf.format(this.dateComplete), this.topic, this.score);
     }
+
+    public String getTopic(){
+        return this.topic;
+    }
+
+    public int getScore(){
+        return this.score;
+    }
+
+    public String getDateCompleteString(){
+        return sdf.format(this.dateComplete);
+    }
 }
