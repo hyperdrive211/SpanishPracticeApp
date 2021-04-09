@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -5,7 +6,9 @@ import java.util.Date;
  * Created By Jonathon on 30/03/2021
  * Update Comments About Program Here
  **/
-public class UserRecord {
+public class UserRecord implements Serializable {
+
+    private static final long serialVersionUID = 5957974488737861120L;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
     private String username,  topic;
     private Date dateComplete;

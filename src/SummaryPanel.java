@@ -41,12 +41,12 @@ public class SummaryPanel extends JPanel implements ActionListener {
         topicHeader = new JLabel("Topic: ", JLabel.LEFT);
         topicHeader.setFont(new Font(design.fontName, Font.BOLD, 17));
         topicHeader.setForeground(design.underLine);
-        topicHeader.setBounds(75, 50, 70, 20);
+        topicHeader.setBounds(75, 50, 60, 20);
 
         sectionHeader = new JLabel(section, JLabel.LEFT);
         sectionHeader.setFont(new Font(design.fontName, Font.BOLD, 17));
         sectionHeader.setForeground(design.text);
-        sectionHeader.setBounds(145, 50, 90, 20);
+        sectionHeader.setBounds(130, 50, 90, 20);
 
         //Set the progress image with a correct/incorrect emoji!
         resultImage = new JLabel();
@@ -63,9 +63,11 @@ public class SummaryPanel extends JPanel implements ActionListener {
         summaryButton = new DisplayBtn(design.success, 9, "Summary");
         summaryButton.setEnabled(false);
         buttonPanel.add(summaryButton);
+        summaryButton.addActionListener(this);
 
         historyBtn = new DisplayBtn(design.underLine, 9, " History");
         buttonPanel.add(historyBtn);
+        historyBtn.addActionListener(this);
 
         leaderBoardButton = new DisplayBtn(design.underLine, 9, "Leader board");
         buttonPanel.add(leaderBoardButton);
@@ -74,10 +76,11 @@ public class SummaryPanel extends JPanel implements ActionListener {
         resultsPanel.setBorder(BorderFactory.createLineBorder(design.underLine, 2));
 
         historyPanel = new JPanel();
-        historyPanel.setLayout(new GridLayout());
+        historyPanel.setLayout(new GridBagLayout());
         historyPanel.setBounds(75, 90, 350, 300);
         historyPanel.setBorder(BorderFactory.createLineBorder(design.underLine, 2));
-        historyPanel.setVisible(true);
+        historyPanel.setVisible(false);
+        setHistoryPanel();
 
 
         this.add(header); this.add(resultsPanel); this.add(header); this.add(topicHeader);
@@ -134,6 +137,21 @@ public class SummaryPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == historyBtn){
+            resultsPanel.setVisible(false);
+            historyPanel.setVisible(true);
+            historyBtn.setBackground(design.success);
+            historyBtn.setEnabled(false);
+            summaryButton.setEnabled(true);
+            summaryButton.setBackground(design.underLine);
+        }
+        if(e.getSource() == summaryButton){
+            historyPanel.setVisible(true);
+            resultsPanel.setVisible(false);
+            summaryButton.setEnabled(false);
+            summaryButton.setEnabled(true);
+            summaryButton.setBackground(design.success);
+        }
 
     }
 }

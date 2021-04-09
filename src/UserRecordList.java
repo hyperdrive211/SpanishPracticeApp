@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Map;
+
 
 /**
  * Created By Jonathon on 30/03/2021
@@ -20,11 +22,8 @@ public class UserRecordList {
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             this.recordList = (ArrayList<UserRecord>) ois.readObject();
-        } catch( IOException ioe){
+        } catch( IOException | ClassNotFoundException ioe){
             ioe.printStackTrace();
-            return;
-        } catch (ClassNotFoundException cnfe){
-            cnfe.printStackTrace();
             return;
         }
     }

@@ -52,9 +52,9 @@ public class QuestionPanel extends JPanel implements ActionListener {
         input = new JTextField();
         this.choicePanel = choicePanel;
 
-        btnExit = new DisplayBtn(design.failure, 12, "Exit");
+        btnExit = new DisplayBtn(design.failure, 10, "X");
         btnExit.addActionListener(l -> exitToChoicePanel());
-        btnExit.setBounds(370, 10, 100, 25);
+        btnExit.setBounds(430, 10, 45, 30);
         btnCheck = new DisplayBtn(design.success, 15, "Check Answer");
         btnCheck.addActionListener(this);
 
@@ -68,19 +68,19 @@ public class QuestionPanel extends JPanel implements ActionListener {
         //Layout Components
         this.setLayout(null);
 
-        holdIMG.setBounds(150, 20, 200, 200);
+        holdIMG.setBounds(100, 10, 300, 300);
 
         holdIMG.setBorder(BorderFactory.createLineBorder(Color.black));
-        input.setBounds(125, 250, 250, 50);
+        input.setBounds(100, 350, 300, 30);
         feedbackPanel = new JPanel();
         feedbackPanel.setLayout(new BorderLayout());
         feedbackPanel.setBackground(design.bgColor);
-        feedbackPanel.setBounds(125, 310, 250, 50);
+        feedbackPanel.setBounds(100, 310, 300, 40);
         feedbackPanel.add(feedBack, BorderLayout.CENTER);
 
-        btnCheck.setBounds(150, 370, 200, 50);
+        btnCheck.setBounds(150, 390, 200, 40);
 
-        btnSkip.setBounds(150, 430, 200, 50);
+        btnSkip.setBounds(150, 440, 200, 40);
         btnSkip.setVisible(false);
         this.add(holdIMG); this.add(input);
         this.add(feedbackPanel); this.add(btnCheck); this.add(btnSkip);
