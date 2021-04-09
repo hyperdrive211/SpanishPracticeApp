@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
 /**
  * Created By Jonathon on 25/01/2021
@@ -111,7 +112,11 @@ public class Registration extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String validation;
         if(e.getSource() == saveBtn){
-            validation = validationText(usernameText.getText(), confirmUsernameText.getText(), String.valueOf(passwordText.getPassword()), String.valueOf(confirmPasswordText.getPassword()), nameText.getText());
+            validation = validationText(usernameText.getText(),
+                    confirmUsernameText.getText(),
+                    String.valueOf(passwordText.getPassword()),
+                    String.valueOf(confirmPasswordText.getPassword()),
+                    nameText.getText());
             if(validation != ""){
                 JOptionPane.showMessageDialog(null, validation);
             }
@@ -136,6 +141,8 @@ public class Registration extends JFrame implements ActionListener {
     }
 
     public String validationText(String username, String confirmUsername, String password, String confirmPassword, String name){
+        String regex = "(.)*(\\d)(.)*";
+        Pattern pattern = Pattern.compile(regex);
         String returnString = "";
         if(username.trim().equals("") || confirmPassword.trim().equals("")
                 || password.trim().equals("") || confirmPassword.trim().equals("") || name.trim().equals("")){
@@ -146,6 +153,9 @@ public class Registration extends JFrame implements ActionListener {
         }
         if(!password.equals(confirmPassword)){
             returnString += "Password and Confirm Password must be thr same value. ";
+        }
+        if(name.matches(regex)){
+            returnString += "Name must not contain a number.";
         }
         return returnString;
     }

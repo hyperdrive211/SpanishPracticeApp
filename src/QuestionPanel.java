@@ -94,13 +94,14 @@ public class QuestionPanel extends JPanel implements ActionListener {
             practiceQuestion.setNounQuestion(pq.getNounQuestion());
             practiceQuestion.setNounAnswer(pq.getNounAnswer());
             practiceQuestion.setUserAnswer(answer);
-            if (context.equals("Skipped")) {
+            if (context.equals("Skipped!")) {
                 practiceQuestion.setCorrect(false);
                 feedbackPanel.setBackground(design.failure);
             } else{
                 practiceQuestion.setCorrect(true);
                 feedbackPanel.setBackground(design.success);
             }
+            System.out.println("Correct:" +practiceQuestion.getCorrect());
             returnPQList.add(practiceQuestion);
             questionCount++;
         }
@@ -158,7 +159,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     void clearPanelAddSummary(){
         this.setVisible(false);
-        SummaryPanel summaryPanel = new SummaryPanel(user, returnPQList, questionDef);
+        SummaryPanel summaryPanel = new SummaryPanel(user, returnPQList, questionDef, getScore());
         choicePanel.btnPanel.setVisible(false);
         choicePanel.add(summaryPanel);
     }
@@ -177,8 +178,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String answer;
-        answer = input.getText().toLowerCase();
+       String answer = input.getText().toLowerCase();
         if(e.getSource() == btnCheck){
             if(pq.getNounAnswer().equalsIgnoreCase(answer)){
                 answerDisplay("Correct!", answer);

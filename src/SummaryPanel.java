@@ -13,7 +13,7 @@ public class SummaryPanel extends JPanel implements ActionListener {
     UserMap uMap;
     ArrayList<PracticeQuestion> feedBackList;
     Design design = new Design();
-    JLabel resultImage, userInfo, header, topicHeader, sectionHeader;
+    JLabel resultImage, userInfo, header, topicHeader, sectionHeader, scoreHeader, scoreLabel;
     JPanel leaderBoardPanel, resultsPanel, buttonPanel, historyPanel;
     JLabel [] eachAnswerResult, leaderBoard;
     DisplayBtn historyBtn, summaryButton, leaderBoardButton;
@@ -24,7 +24,7 @@ public class SummaryPanel extends JPanel implements ActionListener {
     ArrayList<UserRecord> userRecords = new ArrayList<UserRecord>();
 
 
-    SummaryPanel(User user, ArrayList<PracticeQuestion> returnList, String section){
+    SummaryPanel(User user, ArrayList<PracticeQuestion> returnList, String section, int score){
         this.user = user;
         this.feedBackList = returnList;
         this.section = section;
@@ -47,6 +47,16 @@ public class SummaryPanel extends JPanel implements ActionListener {
         sectionHeader.setFont(new Font(design.fontName, Font.BOLD, 17));
         sectionHeader.setForeground(design.text);
         sectionHeader.setBounds(130, 50, 90, 20);
+
+        scoreHeader = new JLabel("Score: ", JLabel.LEFT);
+        scoreHeader.setFont(new Font(design.fontName, Font.BOLD, 17));
+        scoreHeader.setForeground(design.underLine);
+        scoreHeader.setBounds(230, 50, 60, 20);
+
+        scoreLabel = new JLabel(String.valueOf(score), JLabel.LEFT);
+        scoreLabel.setFont(new Font(design.fontName, Font.BOLD, 17));
+        scoreLabel.setForeground(design.text);
+        scoreLabel.setBounds(290, 50, 50, 20);
 
         //Set the progress image with a correct/incorrect emoji!
         resultImage = new JLabel();
@@ -84,7 +94,8 @@ public class SummaryPanel extends JPanel implements ActionListener {
 
 
         this.add(header); this.add(resultsPanel); this.add(header); this.add(topicHeader);
-        this.add(sectionHeader); this.add(buttonPanel); this.add(historyPanel);
+        this.add(sectionHeader); this.add(buttonPanel); this.add(historyPanel); this.add(scoreHeader);
+        this.add(scoreLabel);
     }
 
     public void returnFeedBack(ArrayList<PracticeQuestion> fbList){

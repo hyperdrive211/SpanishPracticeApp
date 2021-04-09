@@ -98,6 +98,8 @@ public class IntroPanel extends JPanel implements ActionListener {
                     choicePanel = new ChoicePanel(user);
                     this.setVisible(false);
                     display.add(choicePanel);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect Password");
                 }
             }
         }
