@@ -7,8 +7,9 @@ import java.util.ArrayList;
  **/
 public class QuestionList {
 
-    ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
+
     public ArrayList<PracticeQuestion> clothingList(){
+        ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
       clothing.add(new PracticeQuestion("img/clothing/coat_200X200.jpg", "Coat", "el abrigo"));
       clothing.add(new PracticeQuestion("img/clothing/gloves_200x200.png", "Gloves", "los guantes"));
       clothing.add(new PracticeQuestion("img/clothing/shirt_200x200.jpg", "Shirt", "la camisa"));
@@ -24,6 +25,14 @@ public class QuestionList {
 
     public ArrayList<PracticeQuestion> furnitureList(){
       ArrayList<PracticeQuestion> furniture = new ArrayList<PracticeQuestion>();
+      furniture.add(new PracticeQuestion("img/furniture/coffee-table-cartoon.jpg", "Table", "la mesa"));
+      furniture.add(new PracticeQuestion("img/furniture/sofa-icon-cartoon.jpg", "Sofa", "el sofa"));
+      furniture.add(new PracticeQuestion("img/furniture/cartoon-lamp.png", "Lamp", "la lampara"));
+      furniture.add(new PracticeQuestion("img/furniture/bookcase-cartoon.jpg", "Bookshelf", "la estantaria"));
+      furniture.add(new PracticeQuestion("img/furniture/cartoon_closet.jpg", "Closet", "el armario"));
+      furniture.add(new PracticeQuestion("img/furniture/"))
+
+
       return furniture;
     }
 

@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created By Jonathon on 04/02/2021
@@ -22,8 +23,7 @@ public class SummaryPanel extends JPanel implements ActionListener {
     GridBagConstraints gbc = new GridBagConstraints();
     UserRecordList userRecordList = new UserRecordList();
     ArrayList<UserRecord> userRecords = new ArrayList<UserRecord>();
-
-
+    HashMap<String, int> leaderBoardData = new HashMap<String, int>();
     SummaryPanel(User user, ArrayList<PracticeQuestion> returnList, String section, int score){
         this.user = user;
         this.feedBackList = returnList;
@@ -143,6 +143,31 @@ public class SummaryPanel extends JPanel implements ActionListener {
             gbc.gridx = 8;  gbc.gridwidth = 4;
             historyPanel.add(score, gbc);
         }
+
+    }
+
+    public int getTotalScore(String username){
+        int score = 0;
+        for(UserRecord rec: userRecords){
+            if(rec.getUsername().equals(username)){
+                score += rec.getScore();
+            }
+        }
+        return score;
+    }
+
+    public void setLeaderBoardData(){
+        uMap = new UserMap();
+        uMap.getData();
+        for(String i: uMap.getUserMap().keySet()){
+            leaderBoardData.put(i, getTotalScore(i));
+        }
+    }
+
+
+    public void setLeaderBoardTable(){
+         setLeaderBoardData();
+
 
     }
 

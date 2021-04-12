@@ -20,8 +20,6 @@ public class User implements Serializable {
 
     private String name;
     private String password;
-    private int  markClothing, markBody, markTravel;
-    private Date  dateClothingComplete, dateBodyComplete, dateTravelComplete;
 
     public User(){
 
@@ -43,20 +41,10 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public void setMarkClothing(int mark){
-        this.markClothing = mark;
-    }
-
-    public int getMarkClothing(){
-        return this.markClothing;
-    }
-
-    public int getTotalScores(){
-        return this.markBody + this.markTravel + this.markClothing;
-    }
-
     //using this as a chance to practice method overloading by having several toString string methods
     //but with several parameters
 
-
+    public String toString(){
+        return String.format("%s %s", this.username, this.name);
+    }
 }
