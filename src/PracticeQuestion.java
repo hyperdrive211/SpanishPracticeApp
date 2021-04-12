@@ -50,7 +50,9 @@ public class PracticeQuestion {
         this.userAnswer = userAnswer;
     }
 
-
+    public String getImgPath(){
+        return this.imgPath;
+    }
     public String toString(){
         return String.format("Noun Question: %s\n Noun Answer: %s \nUser Answer: %s",
                 this.nounQuestion, this.nounAnswer, this.userAnswer);

@@ -45,7 +45,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
         pqList = questions;
         pq = pqList.get(questionCount);
         this.user = user;
-        img = new ImageIcon(pq.getImgURL());
+        img = new ImageIcon(pq.getImgPath());
         holdIMG = new JLabel();
         holdIMG.setIcon(img);
         this.setBackground(design.bgColor);
@@ -129,7 +129,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
       else{
           reset();
           pq = pqList.get(questionCount);
-          holdIMG.setIcon(new ImageIcon(pq.getImgURL()));
+          holdIMG.setIcon(new ImageIcon(pq.getImgPath()));
           btnSkip.setVisible(false);
       }
       timer.stop();

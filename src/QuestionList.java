@@ -10,16 +10,16 @@ public class QuestionList {
 
     public ArrayList<PracticeQuestion> clothingList(){
         ArrayList<PracticeQuestion> clothing = new ArrayList<PracticeQuestion>();
-      clothing.add(new PracticeQuestion("img/clothing/coat_200X200.jpg", "Coat", "el abrigo"));
-      clothing.add(new PracticeQuestion("img/clothing/gloves_200x200.png", "Gloves", "los guantes"));
-      clothing.add(new PracticeQuestion("img/clothing/shirt_200x200.jpg", "Shirt", "la camisa"));
-      clothing.add(new PracticeQuestion("img/clothing/trousers_200x200.jpg", "Trousers", "los pantalones"));
-      clothing.add(new PracticeQuestion("img/clothing/glasses_200x200.jpg", "Glasses", "los lentes"));
-      clothing.add(new PracticeQuestion("img/clothing/hat_200x200.jpg", "Hat", "el sombrero"));
-      clothing.add(new PracticeQuestion("img/clothing/t-shirt_200x200.png", "T-Shirt", "la camiseta"));
-      clothing.add(new PracticeQuestion("img/clothing/tie_200x200.jpg", "Tie", "la corbatta"));
-      clothing.add(new PracticeQuestion("img/clothing/shoes_200x200.jpeg", "Shoes", "los zapatoes"));
-      clothing.add(new PracticeQuestion("img/clothing/skirt_200x200.jpeg", "Skirt", "la falda"));
+      clothing.add(new PracticeQuestion("img/clothing/coat.jpg", "Coat", "el abrigo"));
+      clothing.add(new PracticeQuestion("img/clothing/gloves.png", "Gloves", "los guantes"));
+      clothing.add(new PracticeQuestion("img/clothing/shirt.jpg", "Shirt", "la camisa"));
+      clothing.add(new PracticeQuestion("img/clothing/trousers.jpg", "Trousers", "los pantalones"));
+      clothing.add(new PracticeQuestion("img/clothing/glasses.jpg", "Glasses", "los lentes"));
+      clothing.add(new PracticeQuestion("img/clothing/hat.jpg", "Hat", "el sombrero"));
+      clothing.add(new PracticeQuestion("img/clothing/t-shirt.png", "T-Shirt", "la camiseta"));
+      clothing.add(new PracticeQuestion("img/clothing/tie.jpg", "Tie", "la corbatta"));
+      clothing.add(new PracticeQuestion("img/clothing/shoes.jpeg", "Shoes", "los zapatoes"));
+      clothing.add(new PracticeQuestion("img/clothing/skirt.jpeg", "Skirt", "la falda"));
       return clothing;
     }
 
@@ -30,9 +30,11 @@ public class QuestionList {
       furniture.add(new PracticeQuestion("img/furniture/cartoon-lamp.png", "Lamp", "la lampara"));
       furniture.add(new PracticeQuestion("img/furniture/bookcase-cartoon.jpg", "Bookshelf", "la estantaria"));
       furniture.add(new PracticeQuestion("img/furniture/cartoon_closet.jpg", "Closet", "el armario"));
-      furniture.add(new PracticeQuestion("img/furniture/"))
-
-
+      furniture.add(new PracticeQuestion("img/furniture/cushions-cartoon.jpg", "Cushions", "los cojines"));
+      furniture.add(new PracticeQuestion("img/furniture/curtains-cartoon.jpg", "Curtains", "las cortinas"));
+      furniture.add(new PracticeQuestion("img/furniture/cartoon-desk.jpg", "Desk", "el escritorio"));
+      furniture.add(new PracticeQuestion("img/furniture/cartoon-chair.png", "Chair", "la silla"));
+      furniture.add(new PracticeQuestion("img/furniture/cartoon-tv.png", "Television", "la tele"));
       return furniture;
     }
 

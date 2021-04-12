@@ -76,8 +76,10 @@ public class BtnPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnClothing){
-            System.out.println("Clothing");
             changePanels(questionList.clothingList(), "Clothing");
+        }
+        if(e.getSource() == btnFurniture){
+            changePanels(questionList.furnitureList(), "Furniture");
         }
     }
 

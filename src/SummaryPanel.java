@@ -23,7 +23,7 @@ public class SummaryPanel extends JPanel implements ActionListener {
     GridBagConstraints gbc = new GridBagConstraints();
     UserRecordList userRecordList = new UserRecordList();
     ArrayList<UserRecord> userRecords = new ArrayList<UserRecord>();
-    HashMap<String, int> leaderBoardData = new HashMap<String, int>();
+    HashMap<String, Integer> leaderBoardData = new HashMap<String, Integer>();
     SummaryPanel(User user, ArrayList<PracticeQuestion> returnList, String section, int score){
         this.user = user;
         this.feedBackList = returnList;
