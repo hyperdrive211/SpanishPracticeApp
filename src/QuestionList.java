@@ -29,7 +29,7 @@ public class QuestionList {
       furniture.add(new PracticeQuestion("img/furniture/sofa-icon-cartoon.jpg", "Sofa", "el sofa"));
       furniture.add(new PracticeQuestion("img/furniture/cartoon-lamp.png", "Lamp", "la lampara"));
       furniture.add(new PracticeQuestion("img/furniture/bookcase-cartoon.jpg", "Bookshelf", "la estantaria"));
-      furniture.add(new PracticeQuestion("img/furniture/cartoon_closet.jpg", "Closet", "el armario"));
+      furniture.add(new PracticeQuestion("img/furniture/cartoon_clock.jpg", "Clock", "el reloj"));
       furniture.add(new PracticeQuestion("img/furniture/cushions-cartoon.jpg", "Cushions", "los cojines"));
       furniture.add(new PracticeQuestion("img/furniture/curtains-cartoon.jpg", "Curtains", "las cortinas"));
       furniture.add(new PracticeQuestion("img/furniture/cartoon-desk.jpg", "Desk", "el escritorio"));

@@ -69,8 +69,8 @@ public class QuestionPanel extends JPanel implements ActionListener {
         this.setLayout(null);
 
         holdIMG.setBounds(100, 10, 300, 300);
-
-        holdIMG.setBorder(BorderFactory.createLineBorder(Color.black));
+        holdIMG.setBackground(Color.white);
+        holdIMG.setBorder(BorderFactory.createLineBorder(design.underLine));
         input.setBounds(100, 350, 300, 30);
         feedbackPanel = new JPanel();
         feedbackPanel.setLayout(new BorderLayout());
